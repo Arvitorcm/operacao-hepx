@@ -124,18 +124,26 @@
     }
 
     .tumbler-input {
-      width: 4.25rem;
-      height: 4.85rem;
+      width: 3.35rem;
+      height: 4.05rem;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 1.875rem;
+      font-size: 1.55rem;
       font-weight: 700;
       text-align: center;
-      border-radius: 1rem;
+      border-radius: 0.9rem;
       background: #F8FAFC;
       color: #0F172A;
       border: 2px solid #CBD5E1;
       box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.04);
       transition: all 0.18s ease;
+    }
+    @media (min-width: 640px) {
+      .tumbler-input {
+        width: 4.25rem;
+        height: 4.85rem;
+        font-size: 1.875rem;
+        border-radius: 1rem;
+      }
     }
     .tumbler-input:focus {
       outline: none;
@@ -156,7 +164,7 @@
     }
   </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col overflow-x-hidden">
 
   <!-- Camadas de Fundo Cells at Work! (Cidade Celular Suave) -->
   <div id="cawCityBg" class="caw-bg-layer"></div>
@@ -164,30 +172,30 @@
 
   <!-- TOPO OFICIAL ESTILO CELLS AT WORK! -->
   <header class="sticky top-0 z-40 bg-cawRed text-white border-b border-black/15 shadow-sm no-print">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-9 bg-white flex items-center justify-center shrink-0 shadow-sm" style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
-          <span class="font-heading font-black text-cawRed text-xs tracking-tighter">HEP</span>
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 min-h-[3.75rem] py-2 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-9 h-8 sm:w-10 sm:h-9 bg-white flex items-center justify-center shrink-0 shadow-sm" style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
+          <span class="font-heading font-black text-cawRed text-[11px] sm:text-xs tracking-tighter">HEP</span>
         </div>
-        <div>
+        <div class="min-w-0">
           <div class="flex items-center gap-2">
-            <span class="font-heading font-black tracking-tight text-base sm:text-lg text-white">OPERAÇÃO HEP-X</span>
-            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md bg-white/15 text-white font-mono text-[10px] font-semibold tracking-wide border border-white/20">
+            <span class="font-heading font-black tracking-tight text-sm sm:text-lg text-white truncate">OPERAÇÃO HEP-X</span>
+            <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded-md bg-white/15 text-white font-mono text-[10px] font-semibold tracking-wide border border-white/20 whitespace-nowrap">
               はたらく細胞 · CELLS AT WORK!
             </span>
           </div>
-          <span class="block font-mono text-[11px] text-white/85">Biologia da Célula (CH0856) · Tráfego Intracelular</span>
+          <span class="block font-mono text-[10px] sm:text-[11px] text-white/85 truncate">Biologia da Célula (CH0856)</span>
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <div id="clockDisplay" class="h-9 px-3.5 rounded-xl bg-black/20 text-white border border-white/20 font-mono text-xs font-bold inline-flex items-center">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div id="clockDisplay" class="h-8 sm:h-9 px-2.5 sm:px-3.5 rounded-xl bg-black/20 text-white border border-white/20 font-mono text-[10px] sm:text-xs font-bold inline-flex items-center whitespace-nowrap">
           AGUARDANDO
         </div>
-        <button type="button" onclick="openMonitorModal()" class="h-9 px-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-xs font-semibold transition-colors">
+        <button type="button" onclick="openMonitorModal()" class="h-8 sm:h-9 px-2.5 sm:px-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-[11px] sm:text-xs font-semibold transition-colors whitespace-nowrap">
           Monitor
         </button>
-        <button type="button" onclick="confirmReset()" class="h-9 px-3.5 rounded-xl bg-white text-cawRed hover:bg-slate-100 text-xs font-bold transition-colors shadow-sm">
+        <button type="button" onclick="confirmReset()" class="h-8 sm:h-9 px-2.5 sm:px-3.5 rounded-xl bg-white text-cawRed hover:bg-slate-100 text-[11px] sm:text-xs font-bold transition-colors shadow-sm whitespace-nowrap">
           Trocar Equipe
         </button>
       </div>
@@ -233,7 +241,7 @@
               2. Gabarito dos Módulos
             </button>
             <button type="button" onclick="switchMonitorTab('agentes')" id="mtab_agentes" class="h-9 px-3.5 rounded-xl bg-creamDark text-charcoal text-xs font-semibold hover:bg-moss/20">
-              3. Gabarito dos Agentes
+              3. Gabarito dos Casos-Alvo
             </button>
             <button type="button" onclick="switchMonitorTab('qrcode')" id="mtab_qrcode" class="h-9 px-3.5 rounded-xl bg-creamDark text-charcoal text-xs font-semibold hover:bg-moss/20">
               4. QR Code
@@ -309,434 +317,434 @@
     const MODULES = {
       A: {
         short: "RE e Importação",
-        title: "MÓDULO A — SIMULADOR DE MUTANTES E CONTROLE DE QUALIDADE",
-        subtitle: "Peer Instruction e Análise Experimental (Importação Núcleo × Mitocôndria × RE, Modificações e UPR)",
-        methodology: "Peer Instruction · Previsão Experimental",
-        specialistLead: "Especialistas da Fase 1 em cena: Célula Dendrítica (Importação e Lipídeos) e Linfócito B (RE, QC e UPR). Usem seus Cartões de Campo para conduzir a bancada!",
-        tabLabels: ["1. Experimento (1º Díg.)", "2. Caso Clínico (2º Díg.)", "3. Mecanismo QC/UPR (3º Díg.)"],
+        title: "MÓDULO A — IMPORTAÇÃO PROTEICA E RETÍCULO ENDOPLASMÁTICO",
+        subtitle: "Peer Instruction sobre Importação para Organelas, Modificações no RE e Controle de Qualidade",
+        methodology: "Peer Instruction · Análise de Casos",
+        specialistLead: "Especialistas da Fase 1 em cena: Célula Dendrítica (Importação de Proteínas) e Linfócito B (RE, Controle de Qualidade e UPR). Usem seus Cartões de Campo para conduzir a bancada!",
+        tabLabels: ["1. Experimento (1º Díg.)", "2. Caso Celular (2º Díg.)", "3. Mecanismo RE/UPR (3º Díg.)"],
         d1Options: [
-          ["1", "Permanece solúvel no citosol (não é direcionada ao canal de translocação do RE)"],
-          ["2", "Entra no lúmen do RE, mas mantém o peptídeo-sinal N-terminal preso à cadeia"],
-          ["3", "Atravessa inteiramente o canal e cai solúvel no lúmen (em vez de ancorar na bicamada)"],
-          ["4", "Atravessa os poros nucleares mesmo já dobrada (via NLS e hidrólise de GTP)"],
-          ["5", "Fica barrada do lado externo da mitocôndria (precisaria desenovelar nos sítios de contato)"],
-          ["6", "É translocada cotraducionalmente ao lúmen do RE e liberada sem o peptídeo-sinal"],
-          ["7", "Escapa do RE rumo ao Golgi e meio extracelular por falta de sinal de retenção"]
+          ["1", "Permanece livre no citosol (sem direcionamento ao RE)"],
+          ["2", "Entra no lúmen do RE ainda mantendo o peptídeo-sinal ligado"],
+          ["3", "Atravessa o translocador até o lúmen do RE como proteína solúvel"],
+          ["4", "Passa pelos poros nucleares já dobrada, com gasto de GTP"],
+          ["5", "Fica barrada fora da mitocôndria (precisa se desdobrar para entrar)"],
+          ["6", "Entra no RE durante a síntese (cotraducional) via SRP e canal de translocação"],
+          ["7", "Escapa do RE em direção ao Golgi por perda do sinal de retenção"]
         ],
         qChave: {
-          1: "Experimento de Mutação: Uma proteína normalmente secretada teve os ≥ 8 aminoácidos hidrofóbicos da sequência-sinal N-terminal deletados. Em qual fração celular ela será encontrada?",
-          2: "Ensaio Enzimático: Um inibidor específico bloqueou a peptidase-sinal na face luminal do RE durante a tradução. Qual é o desfecho da proteína importada?",
-          3: "Engenharia Proteica: Uma proteína transmembrana de passagem única perdeu sua sequência hidrofóbica interna de parada de transferência. Onde ela termina?",
-          4: "Comparação Núcleo × Mitocôndria: Uma proteína com sinal de localização nuclear (NLS) dobrou-se completamente no citosol antes de encontrar o núcleo (GTP disponível). O que acontece?",
-          5: "Comparação Mitocôndria × Núcleo: Uma proteína precursora mitocondrial com sinal N-terminal teve o enovelamento 3D travado artificialmente no citosol. O que ocorre nos sítios de contato?",
-          6: "Reconstituição Cotraducional: Ribossomos citosólicos sintetizam cadeia com sequência-sinal de RE íntegra, na presença de SRP, receptor de SRP, canal de translocação e peptidase funcionais. Qual é o resultado?",
-          7: "Mutação de Retenção: Uma chaperona residente do RE perdeu os 4 aminoácidos C-terminais de retenção (KDEL). Onde passa a ser detectada?",
-          8: "Bloqueio de Receptor: O receptor de SRP na membrana do RE foi inativado enquanto a SRP citosólica apenas pausa a tradução sem acoplar à membrana. Onde a proteína fica?",
-          9: "Inibição de Chaperona Citosólica: Um composto impede que uma precursora mitocondrial seja mantida desenovelada ao alcançar a membrana externa. O que acontece na importação?",
-          10: "Troca de Domínio: Uma proteína de membrana de passagem única tem sequência-sinal N-terminal normal, mas seu segmento transmembrana central foi substituído por aminoácidos hidrofílicos. Onde ela termina?"
+          1: "Mutação de Sinal: Uma proteína normalmente secretada perdeu sua sequência-sinal de direcionamento ao RE. Onde ela será encontrada?",
+          2: "Bloqueio de Clivagem: Após atravessar o canal de translocação do RE, um inibidor impediu a remoção da sequência-sinal N-terminal. Qual é o desfecho?",
+          3: "Proteína Solúvel vs. Membrana: Uma proteína com sinal de entrada no RE não possui segmento hidrofóbico de ancoragem na membrana. Onde ela termina?",
+          4: "Transporte Nuclear: Uma proteína com sinal de localização nuclear (NLS) dobrou-se completamente no citosol antes de chegar ao núcleo (com GTP disponível). O que acontece?",
+          5: "Importação Mitocondrial: Uma proteína destinada à mitocôndria teve seu dobramento 3D travado artificialmente no citosol. O que ocorre junto à membrana da organela?",
+          6: "Síntese Normal no RE: Ribossomos traduzem uma proteína secretória com sequência-sinal íntegra, na presença de SRP e canal de translocação funcionais. O que ocorre?",
+          7: "Perda de Retenção: Uma proteína residente do lúmen do RE sofreu mutação e perdeu seu sinal de retenção no RE. Qual será o seu destino?",
+          8: "Falha de Reconhecimento: A partícula SRP falhou em reconhecer o sinal de RE na cadeia nascente durante a tradução. Onde a proteína permanece?",
+          9: "Trava de Dobramento: Chaperonas citosólicas impediram uma proteína precursora mitocondrial de se desenovelar antes do contato com a membrana. O que ocorre?",
+          10: "Sem Âncora Hidrofóbica: Uma proteína direcionada ao RE não tem região hidrofóbica para parar dentro da bicamada lipídica. Como ela fica?"
         },
         options: [
-          ["1", "Falha da SRP ou do receptor de SRP (proteína não é direcionada ao RE)"],
-          ["2", "Falha da peptidase-sinal (a sequência-sinal N-terminal não é clivada)"],
-          ["3", "Falha da N-glicosilação (dolicol / oligossacarídeo-proteína-transferase)"],
-          ["4", "Falha na formação de pontes dissulfeto no lúmen do RE"],
-          ["5", "Perda do sinal C-terminal de 4 aminoácidos de retenção no RE (KDEL · proteína residente escapa)"],
-          ["6", "Controle de qualidade por chaperonas retém proteína levemente malformada, que é degradada"],
-          ["7", "UPR ativada: sobrecarga com expansão do RE e aumento de chaperonas"],
-          ["8", "UPR insuficiente: sobrecarga persistente levando à apoptose"],
-          ["9", "Perda da sequência hidrofóbica de parada de transferência (proteína transmembrana vira solúvel no lúmen)"],
-          ["0", "Falha no desenovelamento necessário para importação pós-traducional em mitocôndrias"]
+          ["1", "Falha no direcionamento ao RE (sinal ausente ou falha da SRP)"],
+          ["2", "Falha na remoção do sinal após entrada no lúmen do RE"],
+          ["3", "Falha na glicosilação (adição de oligossacarídeos no lúmen do RE)"],
+          ["4", "Falha na formação de pontes dissulfeto no lúmen oxidante do RE"],
+          ["5", "Perda do sinal de retenção no RE (proteína residente escapa ao Golgi)"],
+          ["6", "Controle de qualidade retém proteína mal-enovelada no RE por chaperonas"],
+          ["7", "UPR ativada: acúmulo estimula expansão do RE e produção de chaperonas"],
+          ["8", "Saturação extrema da UPR: acúmulo persistente leva à morte celular (apoptose)"],
+          ["9", "Proteína destinada à membrana atravessa inteiramente e fica solúvel no lúmen"],
+          ["0", "Bloqueio do desdobramento impede entrada pós-traducional em mitocôndria"]
         ],
         cases: {
-          1: "Uma proteína normalmente secretada aparece no citosol, sem glicosilação e com a sequência-sinal intacta. Os ribossomos que a sintetizam não se associam à membrana do RE.",
-          2: "Uma proteína chega ao lúmen do RE, mas apresenta massa molecular maior que a normal porque ainda carrega o peptídeo-sinal N-terminal ligado.",
-          3: "Uma proteína entra no RE e se dobra, mas não possui cadeias oligossacarídicas, embora tenha o motivo Asn-X-Ser. Um inibidor da transferência do oligossacarídeo ligado ao lipídeo foi adicionado.",
-          4: "Uma proteína secretada mostra-se instável no meio extracelular: não possui ligações covalentes entre cisteínas, embora todas as cisteínas estejam presentes na cadeia.",
-          5: "Uma chaperona normalmente residente do RE é encontrada no Golgi e no meio extracelular após sofrer mutação em seu sinal de retenção de 4 aminoácidos C-terminais.",
-          6: "Um canal de cloreto de membrana plasmática levemente deformado nunca chega à superfície celular, embora funcionasse se chegasse lá: fica retido por chaperonas no RE e é degradado.",
-          7: "Células secretoras sob alta demanda acumulam proteínas mal enoveladas; receptores do RE ativam a transcrição de chaperonas, o RE expande e as células sobrevivem.",
-          8: "Em células beta pancreáticas sob sobrecarga extrema e prolongada, o RE já está no limite, proteínas mal enoveladas continuam acumulando e as células entram em morte programada.",
-          9: "Um receptor que deveria ficar ancorado na bicamada do RE com um único segmento transmembrana atravessa inteiramente o canal de translocação e cai solúvel no lúmen.",
-          10: "Uma proteína precursora mitocondrial foi tratada com um composto que trava seu enovelamento 3D no citosol; ao contrário de uma proteína nuclear, ela não atravessa os translocadores da organela."
+          1: "Uma proteína normalmente secretada aparece livre no citosol, sem modificações luminais, porque não foi direcionada aos translocadores da membrana do RE.",
+          2: "Uma proteína entra no lúmen do RE, mas apresenta tamanho maior que o normal porque não teve sua sequência-sinal removida após a passagem.",
+          3: "Uma proteína solúvel entra normalmente no lúmen do RE, mas não recebe cadeias laterais de carboidratos (oligossacarídeos) devido à inibição das enzimas luminais.",
+          4: "Uma proteína secretada fica estruturalmente instável fora da célula porque não formou ligações covalentes entre pares de cisteínas no lúmen do RE.",
+          5: "Uma proteína residente do RE é encontrada avançando pelo Golgi e saindo da célula porque perdeu seu sinal de retenção no RE.",
+          6: "Uma proteína sintetizada no RE apresenta um pequeno defeito de dobramento; em vez de seguir ao Golgi, fica retida no lúmen por chaperonas e é degradada.",
+          7: "Células sob alta produção proteica acumulam proteínas mal-dobradas no RE; receptores do RE ativam maior transcrição de chaperonas, o RE expande e a célula se recupera.",
+          8: "Após sobrecarga extrema e prolongada do RE, a resposta compensatória de expansão se esgota, proteínas mal-dobradas continuam acumulando e a célula entra em morte programada.",
+          9: "Uma proteína que deveria ficar presa à bicamada do RE atravessa todo o canal de translocação e é liberada livre e solúvel dentro do lúmen.",
+          10: "Uma proteína precursora mitocondrial permaneceu rígida e dobrada no citosol; ao contrário de proteínas nucleares, ela não conseguiu atravessar a membrana da organela."
         },
         d3Options: [
-          ["1", "O citosol é redutor; pontes dissulfeto entre cisteínas só se formam no ambiente oxidante do lúmen do RE"],
-          ["2", "Um oligossacarídeo de 14 açúcares preso ao dolicol é transferido em bloco à Asparagina (Asn-X-Ser/Thr) no lúmen"],
-          ["3", "Chaperonas retêm proteínas malformadas/multímeros incompletos no RE e encaminham falhas persistentes à degradação no citosol"],
-          ["4", "Estresse luminal ativa receptores do RE e um regulador transcricional no núcleo para ampliar chaperonas e expandir o RE (UPR)"],
-          ["5", "Quando a sobrecarga supera irreversivelmente a capacidade da UPR, a sinalização desencadeia morte celular programada (apoptose)"],
-          ["6", "Lipídeos para mitocôndrias e cloroplastos saem do RE por proteínas carreadoras hidrossolúveis (não por vesículas)"],
-          ["7", "Poros nucleares importam proteínas já dobradas via hidrólise de GTP, enquanto mitocôndrias importam cadeias desenoveladas com clivagem posterior do sinal"]
+          ["1", "O citosol é redutor; pontes dissulfeto entre cisteínas só se formam no lúmen oxidante do RE para estabilizar proteínas"],
+          ["2", "Enzimas do lúmen do RE ligam cadeias de oligossacarídeos às proteínas (glicosilação), protegendo-as e auxiliando seu dobramento e destino"],
+          ["3", "Chaperonas retêm proteínas mal-enoveladas ou montagens incompletas no RE; se não se corrigirem, seguem ao citosol para degradação"],
+          ["4", "Acúmulo de proteínas mal-dobradas ativa a UPR, sinalizando ao núcleo a expansão do RE e síntese de mais chaperonas"],
+          ["5", "Se houver saturação irreversível mesmo após a expansão do RE, o programa UPR pode acionar a morte celular (apoptose)"],
+          ["6", "Entre organelas do sistema de endomembranas (como RE, Golgi e lisossomos), proteínas solúveis viajam no interior de vesículas de transporte"],
+          ["7", "Poros nucleares importam proteínas já dobradas via GTP, enquanto mitocôndrias, cloroplastos e RE exigem passagem desenovelada por translocadores"]
         ],
         qNum: {
-          1: "Pontes Dissulfeto: Por que as pontes dissulfeto estabilizam proteínas secretadas e NÃO se formam antes de a proteína entrar no RE?",
-          2: "N-Glicosilação no RE: Como ocorre a N-glicosilação no lúmen do RE e a partir de qual lipídeo/motivo o açúcar é transferido?",
-          3: "Retenção e QC: O que impede que uma cadeia isolada de anticorpo (sem montar as 4 cadeias) ou um canal CFTR levemente deformado deixem o RE?",
-          4: "Estresse do RE (UPR): Como a célula responde inicialmente quando o acúmulo de proteínas mal enoveladas ultrapassa o ritmo normal do RE?",
-          5: "Sobrecarga Extrema: Em células beta pancreáticas sobrecarregadas no diabetes tipo 2, o que ocorre quando a resposta compensatória do RE é saturada?",
-          6: "Transferência de Lipídeos: Como os lipídeos sintetizados no RE chegam às membranas de mitocôndrias e cloroplastos sem fluxo vesicular direto?",
-          7: "Importação Seletiva: Que diferença fundamental distingue a passagem de proteínas hidrofílicas pelos poros nucleares vs. pelas membranas mitocondriais?",
-          8: "Modificações no RE: Após bloquear a síntese ligada ao lipídeo dolicol, proteínas luminais ficam sem oligossacarídeos e vulneráveis a proteases. Qual mecanismo falhou?",
-          9: "Controle de Qualidade: Se uma proteína malformada retida no RE falha repetidamente em se redobrar com auxílio das chaperonas, qual é o seu desfecho?",
-          10: "Estabilização Luminal: Proteínas que enfrentarão pH variado e proteases extracelulares ganham ligações covalentes entre cisteínas exclusivamente no lúmen. Por quê?"
+          1: "Pontes Dissulfeto: Por que as pontes dissulfeto estabilizam proteínas secretadas e NÃO se formam no citosol?",
+          2: "Glicosilação no RE: Qual é o efeito e a função da adição de oligossacarídeos às proteínas no lúmen do RE?",
+          3: "Controle de Qualidade: O que impede que proteínas mal-dobradas ou montadas pela metade saiam do RE rumo ao Golgi?",
+          4: "Estresse do RE (UPR): Como o RE responde inicialmente quando proteínas mal-enoveladas começam a se acumular em seu lúmen?",
+          5: "Saturação Extrema: O que acontece na célula quando o acúmulo de proteínas mal-dobradas supera a capacidade máxima de expansão da UPR?",
+          6: "Transporte por Vesículas: Como proteínas solúveis passam de uma organela para outra dentro do sistema de endomembranas sem retornar ao citosol?",
+          7: "Comparação de Importação: Que diferença essencial separa a importação pelos poros nucleares da entrada em mitocôndrias, cloroplastos e RE?",
+          8: "Proteção Luminal: Ao inibir a adição de oligossacarídeos no lúmen do RE, as proteínas ficam vulneráveis e com dificuldade de dobramento. Qual modificação falhou?",
+          9: "Destino do Defeito: Se uma proteína retida por chaperonas no RE falha repetidamente em se redobrar corretamente, qual é o seu destino?",
+          10: "Estabilização Oxidante: Proteínas que vão para fora da célula ganham ligações covalentes entre cisteínas exclusivamente dentro do lúmen do RE. Por quê?"
         }
       },
       B: {
         short: "Vesículas de Transporte",
-        title: "MÓDULO B — CIRCUITO VESICULAR E DEBUG DE BLOQUEIO",
-        subtitle: "Único Jogo Físico (Dominó Bipartido) + Engenharia Reversa de Carga, Dinamina, Rab e SNAREs",
+        title: "MÓDULO B — VESÍCULAS REVESTIDAS, SELEÇÃO DE CARGA E FUSÃO SELETIVA",
+        subtitle: "Dominó Vesicular e Debug sobre Revestimentos (Clatrina/COP), Seleção de Carga e Fusão Seletiva",
         methodology: "Gamificação Tátil (Dominó) · Debug de Circuito",
-        specialistLead: "Especialista da Fase 1 em cena: Linfócito T CD8+ (Vesículas e SNAREs). Conduza a montagem do Dominó Físico na mesa e explique como a carga é selecionada e fundida apenas no alvo correto!",
+        specialistLead: "Especialista da Fase 1 em cena: Linfócito T CD8+ (Vesículas Revestidas e Fusão). Monte o Dominó na mesa para acompanhar como a vesícula seleciona a carga e se funde apenas ao alvo correto.",
         tabLabels: ["1. Debug do Dominó (1º Díg.)", "2. Quem Sou Eu? (2º Díg.)", "3. Seleção & Fusão (3º Díg.)"],
-        tableInstruction: "ÚNICO MATERIAL RECORTADO: Retirem da folha impressa do Módulo B (Dominó Vesicular) as 7 peças (C, E, G, H, J, L, Q). Comecem pela Peça G (1ª posição) e encaixem ponta com ponta sobre a mesa (pergunta da ponta direita → resposta da ponta esquerda) até a 7ª peça.",
+        tableInstruction: "NA MESA: Recortem da folha impressa do Módulo B (Dominó Vesicular) as 7 peças (C, E, G, H, J, L, Q). Comecem pela Peça G (1ª posição) e encaixem ponta com ponta sobre a mesa (pergunta da ponta direita → resposta da ponta esquerda) até a 7ª peça.",
         d1Options: [
-          ["1", "1ª Peça do Dominó — Ligação inicial da carga ao receptor de carga na membrana doadora"],
-          ["2", "2ª Peça do Dominó — Adaptinas capturam a cauda citosólica dos receptores de carga"],
-          ["3", "3ª Peça do Dominó — Clatrina monta a cesta poliédrica e curva a fossa revestida"],
-          ["4", "4ª Peça do Dominó — Anel da GTPase dinamina contrai-se e destaca a vesícula"],
-          ["5", "5ª Peça do Dominó — Perda da capa proteica (desnudamento) e transporte por motores no citoesqueleto"],
-          ["6", "6ª Peça do Dominó — Proteína Rab reconhecida por proteína de aprisionamento filamentosa no alvo"],
-          ["7", "7ª Peça do Dominó — Pareamento complementar v-SNARE / t-SNARE e fusão das bicamadas a 1,5 nm"]
+          ["1", "1ª Peça do Dominó — Ligação da proteína de carga ao receptor de carga na membrana de origem"],
+          ["2", "2ª Peça do Dominó — Adaptinas prendem os receptores de carga à capa proteica em formação"],
+          ["3", "3ª Peça do Dominó — Clatrina monta a rede em cesta que curva a membrana (sem escolher a carga)"],
+          ["4", "4ª Peça do Dominó — Dinamina (GTP) contrai o pescoço da fossa e destaca a vesícula"],
+          ["5", "5ª Peça do Dominó — Perda da capa proteica (desnudamento) libera a vesícula para alcançar o alvo"],
+          ["6", "6ª Peça do Dominó — Proteínas Rab na vesícula reconhecidas por proteínas de aprisionamento no alvo"],
+          ["7", "7ª Peça do Dominó — Pareamento complementar v-SNARE / t-SNARE promove a fusão das membranas"]
         ],
         qChave: {
-          1: "Alerta de Bloqueio na Malha: Um análogo não hidrolisável de GTP paralisa o anel constritor espiral no pescoço das fossas revestidas. Em qual posição (1ª a 7ª) do Dominó montado na mesa o circuito congela?",
-          2: "Alerta de Bloqueio na Malha: Uma mutação impede que a ponte citosólica agarre a cauda dos receptores de carga, deixando-os dispersos. Em qual posição (1ª a 7ª) do Dominó ocorre a trava?",
-          3: "Alerta de Bloqueio na Malha: Uma protease clivou as hélices complementares v-SNARE e t-SNARE no ponto de aproximação a 1,5 nm. Em qual posição (1ª a 7ª) do Dominó o tráfego trava?",
-          4: "Alerta de Bloqueio na Malha: A perda da proteína filamentosa de aprisionamento na membrana-alvo impede o reconhecimento da etiqueta Rab da vesícula. Em qual posição (1ª a 7ª) do Dominó ocorre o bloqueio?",
-          5: "Alerta de Bloqueio na Malha: A capa de clatrina permanece presa após a cisão vesicular, impedindo interação direta da membrana e o avanço por proteínas motoras. Em qual posição (1ª a 7ª) do Dominó congela?",
-          6: "Alerta de Bloqueio na Malha: Falha nas moléculas de revestimento que se organizam em cesta poliédrica mantém a membrana completamente plana. Em qual posição (1ª a 7ª) do Dominó o brotamento falha?",
-          7: "Alerta de Bloqueio na Malha: Deletou-se o sinal de transporte na própria macromolécula solúvel, impedindo sua captura inicial na membrana doadora. Qual posição (1ª a 7ª) do Dominó é afetada primeiro?",
-          8: "Microscopia Eletrônica: Observam-se dezenas de fossas profundas revestidas, presas à membrana por um pescoço estreito sem se desprender. Qual posição (1ª a 7ª) do Dominó travou?",
-          9: "Rastreamento Intracelular: Vesículas sem capa chegam à vizinhança da membrana-alvo, mas vagam sem ancorar nem reconhecer identidade de membrana. Qual posição (1ª a 7ª) do Dominó falhou?",
-          10: "Barreira Biofísica: Vesículas já ancoradas falham em expulsar a camada de água entre as superfícies hidrofílicas para unir as bicamadas. Qual posição (1ª a 7ª) do Dominó está bloqueada?"
+          1: "Bloqueio na Malha: A hidrólise de GTP pela dinamina foi bloqueada no pescoço das fossas revestidas. Em qual posição (1ª a 7ª) do Dominó montado na mesa o circuito trava?",
+          2: "Bloqueio na Malha: Uma mutação impede que as adaptinas capturem os receptores de carga na membrana de origem. Em qual posição (1ª a 7ª) do Dominó ocorre a falha?",
+          3: "Bloqueio na Malha: As proteínas complementares v-SNARE e t-SNARE foram inativadas e não se pareiam para fundir as membranas. Em qual posição (1ª a 7ª) o tráfego trava?",
+          4: "Bloqueio na Malha: A proteína de aprisionamento na membrana-alvo perdeu a capacidade de reconhecer a proteína Rab da vesícula. Em qual posição (1ª a 7ª) do Dominó trava?",
+          5: "Bloqueio na Malha: A capa de clatrina permanece presa após a saída da vesícula, impedindo a interação direta com a membrana-alvo. Em qual posição (1ª a 7ª) do Dominó congela?",
+          6: "Bloqueio na Malha: Sem a montagem das moléculas de clatrina em cesta, a membrana permanece plana e não brota. Em qual posição (1ª a 7ª) do Dominó o brotamento falha?",
+          7: "Bloqueio na Malha: Deletou-se o sinal de transporte na proteína de carga, impedindo que ela se ligue ao receptor na membrana de origem. Qual posição (1ª a 7ª) é afetada primeiro?",
+          8: "Observação Experimental: Fossa revestida invaginada permanece presa à membrana por um pescoço estreito sem se destacar. Qual posição (1ª a 7ª) do Dominó travou?",
+          9: "Observação Experimental: Vesículas já sem capa aproximam-se da região-alvo, mas não são capturadas nem reconhecidas pelo compartimento de destino. Qual posição (1ª a 7ª) falhou?",
+          10: "Observação Experimental: Vesículas já ancoradas à distância pela dupla Rab/aprisionamento falham na união final das duas bicamadas lipídicas. Qual posição (1ª a 7ª) está bloqueada?"
         },
         options: [
           ["1", "Clatrina"],
           ["2", "Adaptina"],
-          ["3", "Dinamina (hidrólise de GTP)"],
+          ["3", "Dinamina (GTP)"],
           ["4", "Receptor de carga"],
           ["5", "Proteína Rab / proteína de aprisionamento"],
           ["6", "SNAREs (pareamento v-SNARE / t-SNARE)"],
           ["7", "Proteínas de revestimento COP (transporte RE ↔ Golgi)"],
           ["8", "Sinal de transporte da própria proteína de carga"],
-          ["9", "Remoção da capa proteica (desnudamento) e transporte por motores no citoesqueleto"],
-          ["0", "Proteínas acessórias que desenrolam e separam os complexos SNARE após a fusão"]
+          ["9", "Desnudamento (perda da capa proteica após o destacamento)"],
+          ["0", "Vesícula de transporte nua (pronta para reconhecer e fundir no alvo)"]
         ],
         cases: {
-          1: "«Sem mim, a membrana nunca se curva em cesta poliédrica! As adaptinas e a dinamina estão prontas, mas a membrana permanece plana, sem fossas revestidas. Quem sou eu?»",
-          2: "«Sou a ponte que prende a capa de clatrina à membrana e agarra a cauda dos receptores de carga! Sem mim, os receptores ficam dispersos e não se concentram na vesícula. Quem sou eu?»",
-          3: "«Formo um anel espiral no pescoço da fossa revestida e gasto GTP para estrangular e soltar a vesícula! Deram-me um análogo não hidrolisável de GTP e agora as fossas têm pescoço longo e nunca se destacam. Quem sou eu?»",
-          4: "«Fico na membrana de origem segurando a proteína solúvel no lúmen e a adaptina no citosol! Sem mim, as vesículas de clatrina brotam vazias daquela carga específica. Quem sou eu?»",
-          5: "«Somos a dupla de reconhecimento de identidade à distância (marcador na vesícula + capturador filamentoso na membrana-alvo)! Sem nós, a vesícula vaga perto do alvo sem ancorar. Quem somos nós?»",
-          6: "«Somos as hélices complementares (v e t) que se enrolam como manivela para aproximar as bicamadas a 1,5 nm e expulsar a água! Fomos clivadas: a vesícula ancora via Rab, mas não funde. Quem somos nós?»",
-          7: "«Não sou clatrina! Eu revisto as vesículas que fazem o transporte entre o Retículo Endoplasmático e as cisternas do Golgi. Quando falho, as proteínas secretórias acumulam no RE! Quem sou eu?»",
-          8: "«Sou a etiqueta molecular gravada na própria proteína de carga! Toda a maquinaria de vesículas está intacta, mas como fui deletado, minha proteína foi deixada para trás. Quem sou eu?»",
-          9: "«Atuo logo após a dinamina cortar o pescoço: removo a gaiola de clatrina e conduzo a vesícula pelos microtúbulos! Quando falho, a vesícula continua coberta pela cesta e não encosta no alvo. Que etapa sou eu?»",
-          10: "«Depois que a fusão termina, gasto energia para desenrolar e separar os pares v-SNARE/t-SNARE já usados! Sem mim, todas as SNAREs ficam travadas após o 1º disparo. Quem sou eu?»"
+          1: "«Sem mim, a membrana nunca se curva para formar a fossa revestida! Adaptinas e dinamina estão disponíveis, mas a membrana continua plana. Quem sou eu?»",
+          2: "«Sou a ponte que prende o revestimento de clatrina à membrana e captura os receptores de carga! Sem mim, os receptores não se concentram na vesícula. Quem sou eu?»",
+          3: "«Formo um anel no pescoço da fossa revestida e gasto GTP para cortar e destacar a vesícula da membrana! Quando falho, as fossas ficam presas por um colo estreito. Quem sou eu?»",
+          4: "«Fico na membrana de origem reconhecendo o sinal da macromolécula no lúmen e prendendo-a à adaptina no citosol! Sem mim, a vesícula brota vazia dessa carga. Quem sou eu?»",
+          5: "«Somos a dupla de reconhecimento inicial à distância (marcador na vesícula + capturador na membrana-alvo)! Sem nós, a vesícula não reconhece o endereço correto. Quem somos nós?»",
+          6: "«Somos as hélices complementares (v e t) que se enrolam para puxar as duas membranas bem próximas e fundir as bicamadas! Sem nós, a vesícula ancora, mas não funde. Quem somos nós?»",
+          7: "«Não sou clatrina! Revesto vesículas de transporte entre o Retículo Endoplasmático e o Complexo de Golgi (e entre cisternas do Golgi). Quem sou eu?»",
+          8: "«Sou a etiqueta molecular na própria proteína de carga! Sem mim, o receptor de carga não me captura e fico retida na organela de origem. Quem sou eu?»",
+          9: "«Ocorro logo após a dinamina soltar a vesícula: removo a capa proteica para expor a membrana vesicular antes do encontro com o alvo. Que etapa sou eu?»",
+          10: "«Resulto diretamente da remoção do revestimento proteico: tenho minhas proteínas Rab e v-SNAREs livres na superfície para ancorar e fundir no destino certo. O que sou eu?»"
         },
         d3Options: [
-          ["1", "A clatrina apenas curva a membrana em cesta; quem seleciona a carga são os receptores de carga ligados às adaptinas"],
-          ["2", "Adaptina 1 atua no trecho Golgi → lisossomo (via endossomos), enquanto Adaptina 2 atua na membrana plasmática → endossomos"],
-          ["3", "Vesículas revestidas por proteínas COP operam no trânsito bidirecional RE ↔ Golgi e entre cisternas do Golgi"],
-          ["4", "A remoção da capa após a cisão pela dinamina expõe a membrana da vesícula para interagir com motores e membrana-alvo"],
-          ["5", "Combinações únicas de proteínas Rab e proteínas de aprisionamento garantem reconhecimento à distância e preservam a identidade das organelas"],
-          ["6", "O pareamento v-SNARE/t-SNARE puxa as bicamadas a ~1,5 nm, vencendo a barreira energeticamente desfavorável da água"],
-          ["7", "Proteínas acessórias desenrolam e separam os complexos SNARE usados após a fusão para reutilização em novos ciclos"]
+          ["1", "A clatrina apenas molda/curva a membrana; quem seleciona a carga são os receptores de carga ligados às adaptinas"],
+          ["2", "Diferentes adaptinas ligam a capa de clatrina aos receptores certos na membrana de origem (como no Golgi ou na membrana plasmática)"],
+          ["3", "Além da clatrina, vesículas revestidas por proteínas COP fazem o trânsito entre RE e Golgi (e entre cisternas do Golgi)"],
+          ["4", "A remoção da capa após a cisão pela dinamina expõe a membrana da vesícula para que possa reconhecer e fundir com a membrana-alvo"],
+          ["5", "Combinações únicas de proteínas Rab (vesícula) e proteínas de aprisionamento (alvo) fazem o reconhecimento à distância e preservam a identidade das organelas"],
+          ["6", "O pareamento complementar de v-SNAREs e t-SNAREs aproxima as bicamadas e vence a barreira da água para promover a fusão seletiva"],
+          ["7", "Vesículas revestidas levam tanto proteínas solúveis no lúmen quanto componentes da própria membrana entre organelas sem perder sua identidade"]
         ],
         qNum: {
-          1: "Seleção de Carga: Um colega afirma que 'a própria clatrina escolhe quais proteínas entram na vesícula'. Qual é o argumento correto que refuta essa ideia?",
-          2: "Endereçamento de Capa: Como a célula diferencia a captura mediada por clatrina quando ela ocorre no Golgi versus na membrana plasmática?",
-          3: "Revestimentos: Além da clatrina, qual revestimento proteico realiza especificamente o transporte de vesículas entre o RE e o Complexo de Golgi?",
-          4: "Trânsito Pós-Cisão: Por que a vesícula revestida precisa sofrer desnudamento logo após ser destacada pela dinamina?",
-          5: "Reconhecimento à Distância: O que garante que uma vesícula só ancore na membrana-destino correta, preservando a composição única de cada organela?",
-          6: "Barreira Hidrofilica: Por que duas membranas próximas não se fundem ao acaso e qual mecanismo aproxima as bicamadas até 1,5 nm?",
-          7: "Reciclagem da Maquinaria: Após a incorporação da membrana vesicular à organela-alvo, como as SNAREs voltam a ficar disponíveis?",
-          8: "Especificidade Inicial: Antes do enrolamento das SNAREs, qual dupla faz o primeiro reconhecimento de identidade entre vesícula e membrana-alvo?",
-          9: "Seleção de Carga: Por que, na ausência de adaptinas ou receptores de carga, uma cesta de clatrina perfeita ainda brota vazia da carga específica?",
-          10: "Fusão Seletiva: O ancoramento inicial via Rab aproxima a vesícula, mas qual mecanismo mecânico expulsa a água da superfície hidrofílica na etapa final?"
+          1: "Seleção de Carga: Por que está incorreto afirmar que 'a própria clatrina escolhe quais proteínas entram na vesícula'?",
+          2: "Papel das Adaptinas: Como a vesícula revestida consegue selecionar cargas distintas quando brota no Golgi versus na membrana plasmática?",
+          3: "Tipos de Revestimento: Além das vesículas revestidas de clatrina, qual revestimento proteico atua no transporte entre o RE e o Complexo de Golgi?",
+          4: "Perda da Capa: Por que a vesícula precisa perder seu revestimento proteico logo após ser destacada da membrana de origem?",
+          5: "Reconhecimento do Alvo: O que garante que uma vesícula reconheça à distância apenas a membrana de destino correta, preservando a identidade de cada organela?",
+          6: "Fusão Seletiva: Após o ancoramento inicial à distância, qual mecanismo proteico aproxima firmemente as bicamadas e executa a fusão seletiva?",
+          7: "Carga e Membrana: Além das proteínas solúveis transportadas em seu lúmen, o que mais a vesícula entrega ao se fundir à organela-alvo?",
+          8: "Identidade no Destino: Antes da ação das SNAREs, qual par molecular fornece o primeiro reconhecimento de endereço entre vesícula e membrana-alvo?",
+          9: "Vesículas Vazias: Se a cesta de clatrina se monta normalmente na ausência de adaptinas ou receptores de carga, por que a carga específica não entra?",
+          10: "Última Etapa: O reconhecimento via Rab aproxima a vesícula, mas qual mecanismo impede fusões ao acaso e realiza a união final das membranas?"
         }
       },
       C: {
         short: "Complexo de Golgi",
         title: "MÓDULO C — MAPA DO GOLGI E TRIBUNAL TBL (FATO VS. MITO)",
-        subtitle: "Traçado em Folha Única (Zero Recorte) + Team-Based Learning sobre Polaridade, Maturação e Exocitose",
+        subtitle: "Mapeamento em Folha Única + Team-Based Learning sobre Polaridade, Maturação e Exocitose",
         methodology: "Mapeamento Visual + TBL (Fato vs. Mito)",
-        specialistLead: "Especialista da Fase 1 em cena: Linfócito T CD4+ (Golgi e Exocitose). Desenhem juntos no Mapa do Golgi da mesa antes de votar no painel Fato vs. Mito!",
-        tabLabels: ["1. Mapa & Maturação (1º Díg.)", "2. Caso Exocítico (2º Díg.)", "3. Tribunal TBL (3º Díg.)"],
-        tableInstruction: "ZERO RECORTE: Usem a folha única A4 'Mapa do Complexo de Golgi' e caneta para traçar: (1) a rota contínua da via constitutiva; (2) a agregação em pH ácido/Ca²⁺ da insulina na via regulada; e (3) a reciclagem retrógrada de enzimas na maturação cisternal.",
+        specialistLead: "Especialista da Fase 1 em cena: Linfócito T CD4+ (Golgi e Exocitose). Usem o Mapa do Golgi na mesa para localizar a estação/rota e justificar no quadro do Tribunal TBL antes de votar!",
+        tabLabels: ["1. Mapa Golgi (1º Díg.)", "2. Caso Exocítico (2º Díg.)", "3. Tribunal TBL (3º Díg.)"],
+        tableInstruction: "NA MESA: Usem a folha impressa 'Mapa do Complexo de Golgi' como guia visual (estações 1 a 7 e Rotas A, B e C) circulando a estação/rota da equipe e anotando a justificativa de I, II e III no quadro do Tribunal TBL antes de validar.",
         d1Options: [
-          ["1", "Retículo Endoplasmático (local de síntese e destino do resgate retrógrado via KDEL)"],
-          ["2", "Rede cis do Golgi / CGN (recebe vesículas do RE e devolve proteínas residentes do RE)"],
-          ["3", "Cisterna cis do Golgi (onde atuam as enzimas iniciais da sequência de modificação de oligossacarídeos)"],
-          ["4", "Cisterna medial do Golgi (estação intermediária na pilha de 3 a 20 cisternas achatadas)"],
-          ["5", "Cisterna trans do Golgi (etapas tardias de processamento de açúcares antes da rede de saída)"],
-          ["6", "Rede trans do Golgi / TGN (central de triagem para lisossomos M6P, via constitutiva e agregação pH ácido/Ca²⁺)"],
+          ["1", "Retículo Endoplasmático (local de síntese inicial e destino do retorno de residentes)"],
+          ["2", "Rede cis do Golgi (face de entrada próxima ao RE; recebe vesículas vindas do RE)"],
+          ["3", "Cisterna cis do Golgi (região inicial da pilha onde começam modificações nos oligossacarídeos)"],
+          ["4", "Cisterna medial do Golgi (estação intermediária da pilha durante o processamento)"],
+          ["5", "Cisterna trans do Golgi (etapas finais de modificação de açúcares antes da saída)"],
+          ["6", "Rede trans do Golgi (face de saída que distribui cargas para membrana, secreção ou lisossomos)"],
           ["7", "Maturação Cisternal (cisternas avançam fisicamente cis → trans enquanto enzimas residentes reciclam para trás)"]
         ],
         qChave: {
-          1: "Rastreamento no Mapa: Em qual estação do Golgi proteínas residentes do RE que escaparam são capturadas por seu sinal C-terminal (KDEL) e devolvidas ao RE?",
-          2: "Triagem Final: Qual região atua como central de distribuição na face de saída, separando cargas para lisossomos (M6P), via constitutiva e via regulada?",
-          3: "Processamento Sequencial: Em qual cisterna da pilha (não rede) encontram-se as enzimas iniciais da cadeia rígida de modificação de oligossacarídeos?",
-          4: "Processamento Tardio: Em qual cisterna da pilha (antes da rede de saída) atuam as enzimas tardias de modificação de oligossacarídeos?",
-          5: "Arquitetura da Pilha: Qual cisterna ocupa o centro funcional da pilha do Golgi entre as regiões cis e trans?",
-          6: "Dinâmica das Cisternas: Como o modelo de maturação cisternal explica o avanço da carga secretória mantendo enzimas iniciais na entrada e tardias na saída?",
-          7: "Resgate Retrógrado: Para qual organela retornam as proteínas residentes capturadas na rede cis do Golgi?",
-          8: "Concentração Regulada: Em qual compartimento o pH ácido e a alta concentração de Ca²⁺ promovem a agregação e concentração de até 200× dos produtos da via regulada?",
-          9: "Trânsito de Cargas Grandes: Qual processo dinâmico permite que cargas grandes atravessem a pilha de cis para trans mesmo sem caber em pequenas vesículas de brotamento lateral?",
-          10: "Porta de Entrada: Qual compartimento da face de entrada recebe diretamente as vesículas brotadas do Retículo Endoplasmático?"
+          1: "Rastreamento no Mapa: Em qual região da face de entrada do Golgi as proteínas vindas do RE chegam (e as residentes do RE podem ser devolvidas)?",
+          2: "Triagem Final: Qual estação na face de saída atua como central de distribuição para a membrana plasmática, secreção e lisossomos?",
+          3: "Ordem na Pilha: Em qual cisterna da pilha ficam as enzimas que realizam as primeiras modificações nos oligossacarídeos?",
+          4: "Ordem Tardia: Em qual cisterna da pilha (antes da rede de saída) atuam as enzimas das etapas finais de modificação de açúcares?",
+          5: "Centro da Pilha: Qual cisterna ocupa a posição intermediária entre as faces cis e trans na pilha do Golgi?",
+          6: "Dinâmica do Golgi: Como o modelo de maturação cisternal explica o avanço da carga mantendo cada conjunto de enzimas na sua posição da pilha?",
+          7: "Retorno ao Início: Para qual organela retornam proteínas residentes que porventura escaparam até a rede cis do Golgi?",
+          8: "Divergência Secretória: Em qual compartimento de saída divergem a via exocítica constitutiva, a via regulada e a rota para lisossomos?",
+          9: "Progresso da Cisterna: Que processo descreve o avanço gradual da própria cisterna da face cis até a face trans levando cargas em processamento?",
+          10: "Porta de Entrada: Qual compartimento voltado ao RE recebe primeiro as vesículas brotadas do Retículo Endoplasmático?"
         },
         options: [
-          ["1", "Via exocítica constitutiva (secreção contínua padrão)"],
-          ["2", "Via exocítica regulada (estocagem e liberação sob estímulo)"],
-          ["3", "Falha na agregação em pH ácido/Ca²⁺ na rede trans (carga regulada vaza pela via constitutiva)"],
-          ["4", "Falha no processamento sequencial de oligossacarídeos nas cisternas"],
-          ["5", "Falha do receptor que devolve proteínas residentes fugidas ao RE"],
-          ["6", "Falha no sinal extracelular ou na transdução que dispara a exocitose regulada"],
-          ["7", "Falha no trânsito intra-Golgi entre as cisternas"],
-          ["8", "Bloqueio da via constitutiva (impede crescimento/reposição da membrana plasmática)"],
-          ["9", "Falha na endocitose compensatória que recupera membrana após a exocitose"],
-          ["0", "Mutação sensível à temperatura que retém a proteína no RE a 35 °C"]
+          ["1", "Via exocítica constitutiva (secreção contínua padrão em todas as células)"],
+          ["2", "Via exocítica regulada (estocagem em vesículas e liberação apenas após sinal externo)"],
+          ["3", "Falha na triagem da via regulada (hormônio vaza continuamente sem esperar estímulo)"],
+          ["4", "Falha nas modificações sequenciais de oligossacarídeos dentro das cisternas do Golgi"],
+          ["5", "Falha na devolução de proteínas residentes que escaparam do RE para a face cis"],
+          ["6", "Falha no sinal extracelular que dispara a exocitose das vesículas reguladas"],
+          ["7", "Falha no trânsito ou na maturação ordenada entre as cisternas do Golgi"],
+          ["8", "Bloqueio da via constitutiva (impede crescimento e reposição contínua da membrana)"],
+          ["9", "Falha na remoção equilibrada de membrana por endocitose após secreção intensa"],
+          ["0", "Bloqueio na saída do RE (proteínas ficam retidas antes de alcançar a face cis)"]
         ],
         cases: {
-          1: "Num fibroblasto, uma proteína da matriz extracelular é secretada continuamente, sem estímulo e sem estocagem, sem exigir sequência-sinal particular para sair da rede trans.",
-          2: "Numa célula beta pancreática, a insulina fica concentrada em vesículas secretórias perto da membrana e só é liberada quando a glicose sanguínea sobe.",
-          3: "Numa célula secretora especializada, um hormônio que deveria ser estocado vaza continuamente porque o pH e o Ca²⁺ da rede trans foram alterados e impediram sua agregação.",
-          4: "Uma glicoproteína chega à superfície celular com o oligossacarídeo ainda idêntico ao precursor do RE: as adições e remoções sequenciais de açúcares não ocorreram.",
-          5: "Uma proteína residente do RE escapou até a rede cis do Golgi, mas não retorna ao RE porque o receptor que reconhece seu sinal C-terminal está inativo.",
-          6: "Vesículas secretórias cheias de hormônio acumulam-se junto à membrana plasmática, mas não se fundem nem mesmo quando o estímulo extracelular está presente.",
-          7: "Glicoproteínas ficam retidas na cisterna cis e nunca encontram as enzimas de processamento tardio das cisternas medial e trans.",
-          8: "Uma célula em preparação para divisão não consegue expandir a área da membrana plasmática porque o fluxo contínuo de lipídeos e proteínas novas a partir da rede trans parou.",
-          9: "Após intensa descarga de vesículas secretórias na superfície celular, a área da membrana plasmática cresce sem parar porque a recuperação compensatória de membrana falhou.",
-          10: "Numa linhagem mutante mantida a 35 °C, uma proteína secretória marcada com GFP fica retida no RE e não chega à rede cis; ao resfriar a 25 °C, o transporte ao Golgi recomeça."
+          1: "Num fibroblasto, uma proteína da matriz extracelular é secretada continuamente, sem estímulo externo nem estocagem em vesículas secretórias.",
+          2: "Numa célula endócrina, um hormônio como a insulina fica concentrado e estocado em vesículas secretórias perto da membrana e só sai quando a glicose sobe.",
+          3: "Em uma célula secretora especializada, um hormônio que deveria ficar armazenado em grânulos vaza continuamente pela via padrão sem aguardar sinal.",
+          4: "Uma glicoproteína chega à superfície celular ainda com os açúcares sem as adições e remoções ordenadas que ocorrem ao longo da pilha de cisternas.",
+          5: "Uma proteína residente do RE chega à rede cis do Golgi, mas não retorna à sua organela de origem.",
+          6: "Vesículas secretórias repletas de hormônio acumulam-se junto à membrana plasmática, mas não se fundem mesmo diante do estímulo hormonal.",
+          7: "Proteínas ficam bloqueadas logo na entrada da pilha do Golgi e não avançam pelas cisternas mediais e trans.",
+          8: "Uma célula prestes a se dividir não consegue expandir sua membrana plasmática porque parou o fornecimento contínuo de lipídeos e proteínas pela via padrão.",
+          9: "Após grande liberação de vesículas secretórias, a membrana plasmática aumenta temporariamente demais porque falhou a recuperação de membrana de volta à célula.",
+          10: "Por bloqueio do transporte vesicular inicial, proteínas secretórias recém-sintetizadas acumulam-se dentro do RE e nunca alcançam a rede cis do Golgi."
         },
         tblTrios: {
           1: [
-            "I. Tanto o transporte vesicular quanto a maturação cisternal explicam a dinâmica de trânsito e a polaridade cis → trans no Complexo de Golgi.",
-            "II. A via exocítica constitutiva renova lipídeos e proteínas da membrana plasmática, permitindo à célula crescer antes da divisão.",
-            "III. Em células secretoras especializadas, vesículas da via regulada fundem-se imediata e continuamente com a membrana plasmática sem esperar nenhum sinal extracelular."
+            "I. O Complexo de Golgi possui polaridade marcante, recebendo cargas do RE na face cis e despachando-as pela face trans.",
+            "II. A via exocítica constitutiva opera continuamente em todas as células, renovando lipídeos e proteínas da membrana plasmática.",
+            "III. Na via exocítica regulada, as vesículas secretórias fundem-se imediatamente com a membrana plasmática sem precisar de nenhum sinal extracelular."
           ],
           2: [
-            "I. Somente proteínas solúveis passam pelo Golgi; lipídeos novos da membrana plasmática nunca saem da rede trans.",
-            "II. Na rede cis do Golgi, proteínas residentes que escaparam do RE são capturadas pelo seu sinal C-terminal e devolvidas ao RE.",
+            "I. Apenas proteínas solúveis passam pelo Golgi; lipídeos da membrana plasmática nunca são entregues pela via constitutiva.",
+            "II. Proteínas residentes que escapam do RE até a face cis do Golgi podem ser recuperadas e devolvidas ao RE.",
             "III. No modelo de maturação cisternal, as próprias cisternas avançam de cis para trans enquanto enzimas residentes reciclam para trás."
           ],
           3: [
-            "I. O Complexo de Golgi situa-se próximo ao núcleo (em animais, perto do centrossomo) e forma pilhas com 3 a 20 cisternas achatadas.",
-            "II. A insulina em células beta pancreáticas sai pela via constitutiva contínua, sem estocagem em vesículas secretórias.",
-            "III. Após intensa descarga exocítica na via regulada, a membrana extra é recuperada por endocitose e retorna ao Golgi."
+            "I. O Complexo de Golgi é formado por pilhas de cisternas achatadas próximas ao núcleo, participando de intenso tráfego de vesículas.",
+            "II. A insulina nas células pancreáticas sai continuamente pela via constitutiva, sem estocagem em vesículas secretórias.",
+            "III. Quando há exocitose intensa, parte da membrana adicionada à superfície é recuperada por endocitose."
           ],
           4: [
-            "I. No Golgi, açúcares dos oligossacarídeos são modificados aleatoriamente, sem correlação com a posição da enzima na pilha.",
-            "II. Proteínas da matriz extracelular secretadas continuamente por fibroblastos seguem a via exocítica constitutiva (via-padrão).",
-            "III. A via exocítica regulada está presente indistintamente em todas as células eucarióticas para secreção contínua."
+            "I. No Golgi, os oligossacarídeos das proteínas são modificados de forma aleatória, sem relação com a ordem cis → trans das cisternas.",
+            "II. Proteínas secretadas continuamente pela superfície celular sem sinal específico seguem a via exocítica constitutiva.",
+            "III. A via exocítica regulada ocorre obrigatoriamente em todas as células, mesmo naquelas não especializadas em secreção."
           ],
           5: [
-            "I. A rede trans do Golgi (TGN) separa proteínas destinadas aos lisossomos (via M6P), à via constitutiva e à via regulada.",
-            "II. A via constitutiva exige agregação proteica dependente de Ca²⁺ elevado na rede trans antes de brotar rumo à superfície.",
-            "III. Na maturação cisternal, cada cisterna permanece fixa para sempre e nunca altera o seu repertório enzimático."
+            "I. A rede trans do Golgi (face de saída) distribui proteínas destinadas aos lisossomos, à via constitutiva e à via regulada.",
+            "II. A via constitutiva exige que as proteínas formem agregados em vesículas secretórias de espera antes de ir à membrana.",
+            "III. Na maturação cisternal, nenhuma enzima residente retorna em vesículas e cada cisterna permanece fixa para sempre."
           ],
           6: [
-            "I. A face cis do Golgi fica voltada diretamente para a membrana plasmática e libera vesículas de insulina ao meio externo.",
-            "II. Na exocitose regulada, a liberação do conteúdo estocado ocorre ao acaso sem necessidade de nenhum sinal extracelular.",
-            "III. As modificações sequenciais de açúcares no Golgi partem do bloco precursor de 14 açúcares transferido ainda no RE."
+            "I. A face cis do Golgi fica voltada diretamente para a membrana plasmática para liberar vesículas secretórias de insulina.",
+            "II. Na exocitose regulada, a célula libera seu estoque de hormônios ao acaso, sem depender de estímulo extracelular.",
+            "III. As modificações ordenadas de carboidratos no Golgi dão continuidade à glicosilação iniciada no Retículo Endoplasmático."
           ],
           7: [
             "I. A via exocítica constitutiva opera continuamente em todas as células eucarióticas sem exigir uma sequência-sinal particular.",
-            "II. Na via regulada, o ambiente ácido e a alta concentração de Ca²⁺ na rede trans permitem concentrar proteínas até 200×.",
-            "III. Enzimas iniciais do processamento sequencial de oligossacarídeos concentram-se perto da face cis (entrada), enquanto as que atuam mais tarde ficam próximas à face trans (saída)."
+            "II. Na via regulada, células secretoras especializadas concentram e estocam proteínas em vesículas secretórias até a chegada de um sinal extracelular.",
+            "III. A posição de cada enzima modificadora na pilha cis → trans acompanha a sequência em que os açúcares são processados."
           ],
           8: [
-            "I. Cada pilha do Golgi contém apenas uma única cisterna sem polaridade funcional entre entrada e saída.",
-            "II. Toda proteína destinada à superfície celular precisa receber obrigatoriamente manose 6-fosfato (M6P) na rede trans.",
-            "III. As enzimas tardias do processamento de oligossacarídeos atuam exclusivamente na rede cis antes da entrada na pilha."
+            "I. O Golgi possui apenas uma cisterna isolada, sem diferença funcional entre região cis, medial e trans.",
+            "II. Toda proteína da membrana plasmática é enviada exclusivamente para os lisossomos ao sair da rede trans.",
+            "III. As enzimas das etapas finais de modificação de oligossacarídeos concentram-se na face cis de entrada."
           ],
           9: [
-            "I. A rede cis (CGN) recebe vesículas do RE, enquanto a rede trans (TGN) funciona como estação de saída e distribuição.",
-            "II. Proteínas secretadas pela via constitutiva podem aderir à superfície celular, integrar a matriz extracelular ou difundir-se no exterior.",
-            "III. A agregação que concentra hormônios até 200× acontece no citosol redutor antes mesmo de a cadeia entrar no RE."
+            "I. A face cis recebe vesículas vindas do RE, enquanto a face trans funciona como região de saída e distribuição.",
+            "II. A via constitutiva supre a membrana plasmática e libera proteínas para a superfície celular ou matriz extracelular.",
+            "III. Na exocitose constitutiva, a célula depende obrigatoriamente de um sinal externo hormonal para secretar qualquer proteína."
           ],
           10: [
-            "I. Na via exocítica regulada, as vesículas secretórias fundem-se imediatamente com a membrana plasmática sem esperar estímulo.",
-            "II. A posição de cada enzima modificadora na pilha cis → trans reflete diretamente a ordem em que ela atua no oligossacarídeo.",
-            "III. A elevação da glicose no sangue dispara a liberação regulada de insulina previamente estocada nas células beta pancreáticas."
+            "I. Na via exocítica regulada, as vesículas secretórias nunca ficam armazenadas perto da membrana plasmática.",
+            "II. Dentro das cisternas do Golgi ocorrem modificações sequenciais nos oligossacarídeos das proteínas vindas do RE.",
+            "III. O aumento da glicose sanguínea serve de sinal extracelular para disparar a liberação regulada de insulina."
           ]
         }
       },
       D: {
         short: "Endocitose e Lisossomos",
-        title: "MÓDULO D — CSI LISOSSOMAL: PRONTUÁRIO FORENSE INTEGRADO",
-        subtitle: "PBL Forense (Endocitose: Pinocitose/LDL × Fagocitose, Rota Endossomal, Lisossomos M6P e Ruptura)",
+        title: "MÓDULO D — ENDOCITOSE, ROTA ENDOSSOMAL E BIOLOGIA DOS LISOSSOMOS",
+        subtitle: "CSI Celular sobre Endocitose (Pinocitose × Fagocitose), Rota Endossomal e Funcionamento dos Lisossomos",
         methodology: "PBL Forense · CSI Celular",
-        specialistLead: "Especialista da Fase 1 em cena: Macrófago (Endocitose e Lisossomos). Analise os dados laboratoriais de escala, pH e tempo para fechar o laudo forense da célula HEP-X!",
-        tabLabels: ["1. Escala & Rota (1º Díg.)", "2. Prontuário Forense (2º Díg.)", "3. Bioquímica & Ruptura (3º Díg.)"],
+        specialistLead: "Especialista da Fase 1 em cena: Macrófago (Endocitose e Lisossomos). Analise as evidências para diferenciar as vias de entrada e explicar o funcionamento e a segurança do lisossomo.",
+        tabLabels: ["1. Via & Rota (1º Díg.)", "2. Prontuário Celular (2º Díg.)", "3. Biologia Lisossomal (3º Díg.)"],
         d1Options: [
-          ["1", "Pinocitose inespecífica (vesículas de clatrina < 150 nm em todas as células)"],
-          ["2", "Endocitose mediada por receptor (> 1.000× eficiente; ex. captação de LDL)"],
-          ["3", "Fagocitose (vacúolos/fagossomos > 250 nm por pseudópodes em macrófagos/neutrófilos)"],
-          ["4", "Endossomo inicial (logo abaixo da membrana; pH 5–6 dissocia ligante do receptor)"],
-          ["5", "Endossomo tardio (5–15 min após entrada, perto do núcleo; já contém algumas hidrolases)"],
-          ["6", "Lisossomo (~40 hidrolases ácidas com M6P em pH ~5,0; ponto de convergência digestiva)"],
-          ["7", "Transportadores da membrana lisossômica (exportam aminoácidos, açúcares e colesterol ao citosol)"]
+          ["1", "Pinocitose (ingestão contínua de líquidos e solutos em pequenas vesículas)"],
+          ["2", "Endocitose mediada por receptores (captura seletiva e concentrada, ex. LDL)"],
+          ["3", "Fagocitose (ingestão de partículas grandes/microrganismos por pseudópodes em fagossomos)"],
+          ["4", "Endossomo inicial (estação periférica ácida que recebe a vesícula e separa ligante do receptor)"],
+          ["5", "Endossomo tardio (estação intermediária mais próxima ao núcleo na rota até o lisossomo)"],
+          ["6", "Lisossomo (compartimento ácido com enzimas hidrolíticas; local principal de digestão)"],
+          ["7", "Transportadores da membrana lisossômica (levam nutrientes digeridos ao citosol)"]
         ],
         qChave: {
-          1: "Evidência 1 (Escala < 150 nm): Fibroblastos captam continuamente fluido extracelular com traçador solúvel sem receptor em pequenas vesículas revestidas de clatrina (~100 nm). Qual via é esta?",
-          2: "Evidência 1 (Seletividade > 1.000×): Mesmo em baixa concentração no sangue, o colesterol-LDL entra rapidamente no hepatócito ao se concentrar em fossas de clatrina. Que mecanismo explica essa eficiência?",
-          3: "Evidência 1 (Escala > 250 nm): Macrófagos estendem pseudópodes ao reconhecer anticorpos na parede bacteriana e formam grandes vacúolos de 500 nm. Qual é o processo?",
-          4: "Evidência 1 (Janela Inicial & pH 5–6): Logo após entrar na célula, a vesícula perde a capa e funde-se a uma estação periférica cujo pH ácido faz o LDL soltar do receptor. Qual é a estação?",
-          5: "Evidência 1 (Janela 5–15 min): Entre 5 e 15 min após a marcação, o ligante dissociado concentra-se perto do núcleo em uma estação que já recebeu algumas enzimas digestivas. Qual estação é esta?",
-          6: "Evidência 1 (Convergência Terminal): Para onde convergem endossomos tardios, fagossomos e autofagossomos, encontrando ~40 hidrolases ativas em pH ~5,0?",
-          7: "Evidência 1 (Exportação Metabólica): Após a hidrólise das macromoléculas, por qual componente os açúcares, aminoácidos e o colesterol livre chegam ao citosol?",
-          8: "Evidência 1 (Patógeno Intracelular): Mycobacterium tuberculosis sobrevive intacta dentro de um grande vacúolo (> 250 nm) no macrófago. Por qual via endocítica ela foi internalizada?",
-          9: "Evidência 1 (Bifurcação): Em qual compartimento endossomal ocorre a dissociação ácida que permite reciclar o receptor de LDL à membrana enquanto o ligante segue para degradação?",
-          10: "Evidência 1 (Alvo de Estatinas): Qual mecanismo endocítico dependente de clatrina explica tanto a remoção de LDL do sangue quanto a captação de vitamina B12 e ferro (transferrina)?"
+          1: "Evidência 1: Células captam continuamente líquidos extracelulares e pequenas moléculas dissolvidas por meio de pequenas vesículas endocíticas. Qual é este processo?",
+          2: "Evidência 1: O colesterol-LDL liga-se a proteínas específicas na superfície celular para ser concentrado e captado seletivamente sem engolir grande volume de líquido. Qual mecanismo é este?",
+          3: "Evidência 1: Macrófagos estendem projeções da membrana (pseudópodes) ao redor de uma bactéria para formar um grande vacúolo digestivo. Qual é o processo?",
+          4: "Evidência 1: Logo após entrar na célula, qual é o primeiro compartimento interno que recebe a vesícula endocítica e inicia a separação do ligante em meio ácido?",
+          5: "Evidência 1: Após passar pelo endossomo inicial e antes de atingir o lisossomo maduro, qual compartimento intermediário recebe o material ingerido?",
+          6: "Evidência 1: Qual organela membranosa representa o destino final de convergência digestiva para materiais endocitados, fagocitados e autofágicos?",
+          7: "Evidência 1: Depois que macromoléculas são digeridas dentro do lisossomo, por onde aminoácidos, açúcares e lipídeos passam para chegar ao citosol?",
+          8: "Evidência 1: Células especializadas do sistema imune (macrófagos e neutrófilos) capturam restos celulares e microrganismos inteiros formando fagossomos. Qual via realizam?",
+          9: "Evidência 1: Em qual estação endossomal o ambiente ácido faz o LDL soltar do seu receptor, permitindo reciclar o receptor de volta à membrana plasmática?",
+          10: "Evidência 1: Que modalidade ligada à pinocitose utiliza receptores na superfície celular para concentrar e importar macromoléculas específicas como o LDL?"
         },
         options: [
-          ["1", "Fagocitose (pseudópodes e fagossomos > 250 nm)"],
-          ["2", "Pinocitose inespecífica (vesículas < 150 nm)"],
-          ["3", "Endocitose mediada por receptor com defeito no receptor de LDL"],
-          ["4", "Falha na acidificação luminal (bomba de H⁺ dependente de ATP)"],
-          ["5", "Falha no marcador manose 6-fosfato (M6P) ou em seu receptor"],
-          ["6", "Autofagia (organela envolvida por membrana dupla / autofagossomo)"],
-          ["7", "Bloqueio da fusão entre fagossomo e lisossomo"],
-          ["8", "Ruptura do lisossomo com inativação das hidrolases no pH neutro do citosol (~7,2)"],
-          ["9", "Defeito nos transportadores da membrana lisossômica (metabólitos retidos no lúmen)"],
-          ["0", "Perda da camada protetora de glicosilação das proteínas da própria membrana lisossômica"]
+          ["1", "Fagocitose (englobamento de partículas grandes por pseudópodes em fagossomos)"],
+          ["2", "Pinocitose (ingestão contínua de líquido e solutos em vesículas pequenas)"],
+          ["3", "Endocitose mediada por receptores (defeito no receptor impede captação de LDL)"],
+          ["4", "Falha na acidificação interna (bomba de H⁺ dependente de ATP)"],
+          ["5", "Falha no direcionamento das enzimas lisossomais a partir da rede trans do Golgi"],
+          ["6", "Autofagia (organela desgastada envolvida por membrana dupla para digestão)"],
+          ["7", "Bloqueio na fusão do fagossomo com o lisossomo"],
+          ["8", "Rompimento do lisossomo com inativação das enzimas no pH neutro do citosol (~7,2)"],
+          ["9", "Defeito nos transportadores da membrana lisossômica (nutrientes ficam retidos)"],
+          ["0", "Perda da glicosilação protetora das proteínas da própria membrana do lisossomo"]
         ],
         cases: {
-          1: "PRONTUÁRIO CORROÍDO: «Um macrófago ativado estende [████████████] e engolfa bactérias inteiras recobertas por anticorpos em vacúolos grandes (> 250 nm). Identifique o processo!»",
-          2: "PRONTUÁRIO CORROÍDO: «Um fibroblasto ingere continuamente fluido extracelular e solutos dissolvidos em pequenas vesículas (< 150 nm) de forma [████████████]. Identifique o processo!»",
-          3: "PRONTUÁRIO CORROÍDO: «O colesterol sanguíneo disparou! As partículas de LDL não se concentram nas fossas de clatrina porque falta o [████████████] funcional na superfície celular.»",
-          4: "PRONTUÁRIO CORROÍDO: «O pH interno dos endossomos e lisossomos subiu para ~7,0! As hidrolases estão presentes, mas inativas, e o LDL não se solta do receptor por falha na [████████████].»",
-          5: "PRONTUÁRIO CORROÍDO: «Os lisossomos estão vazios! As hidrolases ácidas foram secretadas para fora da célula porque na rede trans do Golgi faltou o reconhecimento do marcador [████████████].»",
-          6: "PRONTUÁRIO CORROÍDO: «No hepatócito, uma mitocôndria senescente foi envolvida por uma [████████████] e entregue ao lisossomo para reciclagem intracelular.»",
-          7: "PRONTUÁRIO CORROÍDO: «Mycobacterium tuberculosis foi fagocitada pelo macrófago, mas sobrevive intacta dentro do vacúolo porque impede a [████████████].»",
-          8: "PRONTUÁRIO CORROÍDO: «Alguns lisossomos romperam-se e liberaram hidrolases no citoplasma! Contudo, a célula foi protegida porque o [████████████] inativa as hidrolases ácidas.»",
-          9: "PRONTUÁRIO CORROÍDO: «A digestão ácida gerou aminoácidos, açúcares e colesterol livre normalmente, mas esses nutrientes ficaram presos dentro do lisossomo por defeito nos [████████████].»",
-          10: "PRONTUÁRIO CORROÍDO: «O próprio lisossomo está sofrendo autodigestão! As proteínas transmembrana que revestem sua face interna perderam o escudo de [████████████].»"
+          1: "PRONTUÁRIO: «Um macrófago estende [████████████] e engloba bactérias invasoras inteiras em grandes vacúolos chamados fagossomos. Identifique o processo!»",
+          2: "PRONTUÁRIO: «Uma célula eucariótica ingere continuamente pequenas gotículas de líquido extracelular e solutos dissolvidos por [████████████]. Identifique o processo!»",
+          3: "PRONTUÁRIO: «O colesterol-LDL acumula-se no sangue porque as células têm defeito na [████████████] e não captam a partícula seletivamente.»",
+          4: "PRONTUÁRIO: «O pH interno dos endossomos e lisossomos perdeu a acidez e ficou próximo ao neutro! As enzimas estão lá, mas pararam de agir por falha na [████████████].»",
+          5: "PRONTUÁRIO: «Os lisossomos estão vazios! As enzimas hidrolíticas foram secretadas para fora da célula por [████████████].»",
+          6: "PRONTUÁRIO: «No interior da célula, uma mitocôndria envelhecida foi cercada por membrana dupla e entregue ao lisossomo para reciclagem por [████████████].»",
+          7: "PRONTUÁRIO: «Uma bactéria foi englobada em um fagossomo, mas sobreviveu sem ser digerida porque houve [████████████].»",
+          8: "PRONTUÁRIO: «Um lisossomo rompeu-se e extravasou enzimas hidrolíticas no citoplasma! Contudo, a célula não sofreu autodigestão porque houve [████████████].»",
+          9: "PRONTUÁRIO: «A digestão dentro do lisossomo ocorreu normalmente, mas os açúcares e aminoácidos produzidos não chegaram ao citosol por [████████████].»",
+          10: "PRONTUÁRIO: «As próprias proteínas da membrana do lisossomo começaram a ser digeridas pelas hidrolases internas devido à [████████████].»"
         },
         d3Options: [
-          ["1", "Bomba de H⁺ dependente de ATP mantém o interior ácido (pH ~5,0), ativando as ~40 hidrolases e dissociando ligantes"],
-          ["2", "Em caso de ruptura lisossômica, o pH neutro do citosol (~7,2) inativa as hidrolases ácidas e protege a célula"],
-          ["3", "Proteínas transmembrana da face luminal do lisossomo são altamente glicosiladas, formando escudo contra autodigestão"],
-          ["4", "Hidrolases recebem manose 6-fosfato (M6P) no RE/rede cis e ligam-se a receptores M6P na TGN rumo a endossomos tardios"],
-          ["5", "Na autofagia, uma membrana dupla envolve organelas obsoletas (autofagossomo), que se funde ao lisossomo para reciclagem"],
-          ["6", "Receptores endocitados podem seguir 3 destinos no endossomo: reciclagem, degradação lisossomal ou transcitose"],
-          ["7", "Transportadores específicos da membrana lisossômica levam aminoácidos, açúcares e colesterol livre ao citosol"]
+          ["1", "Uma bomba de H⁺ dependente de ATP mantém o interior ácido (pH ~5,0), condição necessária para ativar as enzimas hidrolíticas"],
+          ["2", "Em caso de ruptura lisossômica, o pH neutro do citosol (~7,2) inativa as enzimas ácidas e protege a célula contra autodigestão"],
+          ["3", "Proteínas voltadas para a face interna do lisossomo são altamente glicosiladas, protegendo a própria membrana contra digestão"],
+          ["4", "As hidrolases lisossomais vêm do RE/Golgi com marcação específica na rede trans para serem entregues aos endossomos e lisossomos"],
+          ["5", "Na autofagia, uma membrana dupla envolve organelas desgastadas da própria célula (autofagossomo), que se funde ao lisossomo"],
+          ["6", "A sequência percorrida por uma macromolécula ingerida é: vesícula endocítica → endossomo inicial → endossomo tardio → lisossomo"],
+          ["7", "Transportadores da membrana lisossômica exportam aminoácidos, açúcares e lipídeos digeridos para reutilização no citosol"]
         ],
         qNum: {
-          1: "Acidificação Ativa: Como o lisossomo cria e sustenta ativamente o ambiente químico necessário para a atividade de suas ~40 hidrolases?",
-          2: "Proteção Citosólica: Se um lisossomo se romper e extravasar seu conteúdo no citoplasma, por que a célula não se autodestrói imediatamente?",
-          3: "Escudo de Membrana: Com dezenas de proteases e fosfolipases ativas no lúmen, o que protege a própria membrana do lisossomo?",
-          4: "Endereçamento Enzimático: Como as hidrolases sintetizadas no RE são desviadas da secreção padrão na rede trans para chegar ao lisossomo?",
-          5: "Digestão de Organelas: Por qual via o lisossomo degrada uma mitocôndria senescente do próprio hepatócito sem que ela venha do meio extracelular?",
-          6: "Triagem Endossomal: Quais são os três destinos possíveis para os receptores que chegam aos endossomos durante a endocitose?",
-          7: "Aproveitamento Celular: Como os produtos finais da digestão ácida dentro do lisossomo são disponibilizados para o metabolismo citosólico?",
-          8: "Segurança Citoplasmática: Em um experimento de ruptura controlada de poucos lisossomos, o dano citosólico foi mínimo. Qual barreira bioquímica protegeu o citosol?",
-          9: "Doença de Depósito: Quando falta a marcação fosforilada no carbono 6 da manose ou seu receptor na TGN, as hidrolases vazam ao exterior. Que sistema de etiqueta falhou?",
-          10: "Inibição de Gradiente: Se uma droga paralisa a bomba de H⁺ dependente de ATP, o pH sobe para ~7,0, parando tanto o desligamento do LDL quanto a digestão. O que falhou?"
+          1: "Ambiente Interno: Como o lisossomo cria e mantém o ambiente químico ideal para o funcionamento de suas enzimas hidrolíticas?",
+          2: "Ruptura no Citoplasma: Se um lisossomo se romper e extravasar seu conteúdo no citosol, por que a célula não sofre autodigestão imediata?",
+          3: "Autoproteção da Membrana: Com tantas enzimas digestórias ativas em seu interior, o que impede que o lisossomo digira a si mesmo?",
+          4: "Origem das Enzimas: Como as enzimas digestórias destinadas ao lisossomo chegam até ele sem serem secretadas para fora da célula?",
+          5: "Reciclagem Interna: Como o lisossomo consegue digerir organelas envelhecidas da própria célula, como mitocôndrias desgastadas?",
+          6: "Rota Completa: Qual é a sequência correta de compartimentos percorrida por uma macromolécula ingerida por endocitose até sua digestão?",
+          7: "Saída de Nutrientes: Após a quebra das macromoléculas no lúmen lisossômico, como os produtos úteis são disponibilizados ao citosol?",
+          8: "Segurança Citosólica: Em experimentos de extravasamento lisossomal, as proteases liberadas tornam-se inativas no citoplasma. Que fator explica isso?",
+          9: "Entrega Enzimática: Se as enzimas lisossomais falharem no seu endereçamento a partir da rede trans do Golgi, o que acontece com elas?",
+          10: "Dependência de Acidez: Se a bomba de prótons (H⁺) parar de funcionar e o pH interno subir para ~7,0, qual é o efeito imediato sobre a digestão?"
         }
       }
     };
 
     const AGENTS = {
       1: {
-        name: "Agente 1 – Tunicamicina (Sabotador da N-Glicosilação no RE)",
-        desc: "Antibiótico bacteriano usado em pesquisa. Bloqueia a síntese do oligossacarídeo precursor de 14 açúcares ligado ao lipídeo dolicol na membrana do RE.",
+        name: "Caso 1 – Falha na Glicosilação e Estresse no RE",
+        desc: "Modificações no lúmen do RE falharam: proteínas saem sem oligossacarídeos, perdem estabilidade e acumulam no lúmen ativando a resposta UPR.",
         clues: [
-          "PISTA 1/4: Composto hidrofóbico bacteriano ancorado na membrana onde nascem as glicoproteínas.",
-          "PISTA 2/4: O lipídeo carreador de membrana parou de fornecer o bloco precursor de 14 açúcares.",
-          "PISTA 3/4: Proteínas recém-sintetizadas possuem o motivo Asn-X-Ser/Thr intacto, mas ficam sem carboidratos.",
-          "PISTA 4/4: Chaperonas retêm as cadeias incompletas no lúmen e disparam o alarme de estresse luminal (UPR)."
+          "PISTA 1/4: O defeito ocorre dentro do lúmen do Retículo Endoplasmático logo após a entrada das cadeias.",
+          "PISTA 2/4: As proteínas permanecem sem cadeias laterais de carboidratos (falha na glicosilação).",
+          "PISTA 3/4: Chaperonas retêm as proteínas mal-enoveladas, aumentando a sobrecarga no RE.",
+          "PISTA 4/4: Integre no Dossiê qual modificação falhou no RE e como a UPR responde a esse acúmulo."
         ]
       },
       2: {
-        name: "Agente 2 – Brefeldina A (Sabotador do Tráfego RE ↔ Golgi / Capa COP)",
-        desc: "Metabólito fúngico experimental. Impede o recrutamento das proteínas de capa COP nas vesículas entre RE e Golgi, fazendo o Golgi colapsar no RE.",
+        name: "Caso 2 – Bloqueio de Vesículas entre RE e Golgi",
+        desc: "O brotamento de vesículas revestidas entre RE e Golgi parou: proteínas secretórias ficam retidas no RE e não alcançam a face cis do Golgi.",
         clues: [
-          "PISTA 1/4: Metabólito fúngico bloqueando a formação de vesículas revestidas não-clatrina.",
-          "PISTA 2/4: As vesículas da membrana plasmática operam, mas o brotamento na saída da fábrica parou.",
-          "PISTA 3/4: Proteínas secretórias acumulam-se no RE sem alcançar a rede cis do Golgi.",
-          "PISTA 4/4: As cisternas da central de distribuição fundiram-se de volta ao Retículo Endoplasmático."
+          "PISTA 1/4: O bloqueio atinge o transporte por vesículas revestidas logo na saída da fábrica proteica.",
+          "PISTA 2/4: O revestimento proteico específico entre RE e Golgi (proteínas COP) deixou de se formar.",
+          "PISTA 3/4: Proteínas destinadas ao exterior acumulam-se no RE sem chegar à face cis.",
+          "PISTA 4/4: Integre no Dossiê como as vesículas revestidas conectam o RE à polaridade do Golgi."
         ]
       },
       3: {
-        name: "Agente 3 – Toxina Botulínica (Sabotadora do Complexo SNARE)",
-        desc: "Protease bacteriana que cliva especificamente proteínas SNARE, impedindo a aproximação final de 1,5 nm e a fusão vesicular.",
+        name: "Caso 3 – Falha na Fusão Seletiva (Complexo SNARE)",
+        desc: "As vesículas brotam, perdem a capa e ancoram no destino via Rab, mas falham na etapa final porque suas proteínas SNARE complementares não se pareiam.",
         clues: [
-          "PISTA 1/4: Enzima proteolítica de origem bacteriana detectada no citosol junto à membrana-alvo.",
-          "PISTA 2/4: O brotamento revestido, a cisão por dinamina e o ancoramento inicial via Rab estão normais.",
-          "PISTA 3/4: Hélices proteicas de fusão aparecem cortadas no ponto de contato entre vesícula e alvo.",
-          "PISTA 4/4: Vesículas ficam ancoradas na membrana-alvo, mas não vencem a água para fundir nem liberar a carga."
+          "PISTA 1/4: O problema acontece na etapa final de chegada da vesícula à membrana-alvo.",
+          "PISTA 2/4: O revestimento e o reconhecimento inicial à distância por proteínas Rab funcionam normalmente.",
+          "PISTA 3/4: As proteínas transmembrana complementares (v-SNARE e t-SNARE) não conseguem unir as bicamadas.",
+          "PISTA 4/4: Integre no Dossiê por que Rab e SNAREs garantem a fusão apenas no destino correto."
         ]
       },
       4: {
-        name: "Agente 4 – Dynasore (Sabotador da GTPase Dinamina)",
-        desc: "Molécula sintética experimental que inibe a hidrólise de GTP pela dinamina no pescoço das fossas revestidas.",
+        name: "Caso 4 – Paralisia da Dinamina (Brotamento Travado)",
+        desc: "Receptores e adaptinas selecionam a carga e a clatrina curva a membrana, mas sem a ação da dinamina (GTP) a vesícula não se destaca da origem.",
         clues: [
-          "PISTA 1/4: Composto sintético bloqueando a hidrólise de GTP no colo das invaginações de membrana.",
-          "PISTA 2/4: Receptores de carga, adaptinas e a cesta de clatrina montam-se normalmente.",
-          "PISTA 3/4: O anel constritor espiral forma-se no pescoço da vesícula, mas fica paralisado.",
-          "PISTA 4/4: Microscopia revela dezenas de fossas profundas com pescoço longo presas à membrana."
+          "PISTA 1/4: As invaginações revestidas se formam normalmente, mas nunca se soltam como vesículas livres.",
+          "PISTA 2/4: Receptores de carga, adaptinas e cesta de clatrina estão intactos na membrana.",
+          "PISTA 3/4: O estrangulamento final dependente de GTP falhou no pescoço da fossa revestida.",
+          "PISTA 4/4: Integre no Dossiê o papel da dinamina na formação de vesículas revestidas."
         ]
       },
       5: {
-        name: "Agente 5 – Monensina (Sabotadora do pH da Rede Trans do Golgi)",
-        desc: "Ionóforo que dissipa o gradiente de H⁺ na rede trans do Golgi (TGN), neutralizando o pH necessário para a agregação da via regulada.",
+        name: "Caso 5 – Desequilíbrio na Exocitose Regulada",
+        desc: "Célula secretora especializada perdeu o controle da via regulada: produtos que deveriam aguardar estímulo externo (como insulina) não são liberados sob sinal.",
         clues: [
-          "PISTA 1/4: Ionóforo trocador de prótons infiltrado nas membranas da estação de saída do Golgi (TGN).",
-          "PISTA 2/4: O ambiente luminal da rede trans perdeu sua acidez característica.",
-          "PISTA 3/4: Proteínas secretórias que dependiam de pH ácido e Ca²⁺ não conseguem mais se agregar até 200×.",
-          "PISTA 4/4: Hormônios que deveriam ficar estocados em grânulos estão vazando pela via constitutiva."
+          "PISTA 1/4: A falha afeta a saída de proteínas na face trans do Complexo de Golgi.",
+          "PISTA 2/4: A secreção contínua padrão (via constitutiva) segue operando em todas as células.",
+          "PISTA 3/4: Vesículas secretórias estocadas não respondem adequadamente ao sinal extracelular.",
+          "PISTA 4/4: Integre no Dossiê a diferença entre via exocítica constitutiva e via regulada."
         ]
       },
       6: {
-        name: "Agente 6 – Cloroquina (Sabotadora da Acidificação Endossomal e Lisossômica)",
-        desc: "Base fraca farmacológica que se concentra em endossomos e lisossomos e eleva seu pH interno, inativando hidrolases ácidas.",
+        name: "Caso 6 – Perda da Acidez Endossomal e Lisossômica",
+        desc: "Falha na bomba de prótons (H⁺) elevou o pH de endossomos e lisossomos próximo à neutralidade (~7,0), interrompendo a dissociação de cargas e a digestão.",
         clues: [
-          "PISTA 1/4: Base fraca protonável acumulando-se seletivamente nas organelas da via endocítica.",
-          "PISTA 2/4: O lúmen dos endossomos e lisossomos perdeu a acidez (~5,0) e aproximou-se de pH neutro.",
-          "PISTA 3/4: Nos endossomos iniciais, as partículas captadas não se dissociam de seus receptores.",
-          "PISTA 4/4: As ~40 hidrolases estão presentes no lisossomo, mas permanecem cataliticamente inativas."
+          "PISTA 1/4: O pH interno das organelas da via endocítica subiu para próximo do pH citosólico (~7,2).",
+          "PISTA 2/4: Nos endossomos iniciais, moléculas ingeridas não se separam de seus receptores.",
+          "PISTA 3/4: As enzimas hidrolíticas dentro do lisossomo estão presentes, mas tornaram-se inativas.",
+          "PISTA 4/4: Integre no Dossiê por que o pH ácido é essencial e o que acontece se o lisossomo romper."
         ]
       },
       7: {
-        name: "Agente 7 – Enzima Recombinante com M6P (Terapia de Reposição Lisossômica)",
-        desc: "Cenário clínico: falha na marcação M6P deixou os lisossomos vazios (doença de depósito). Agente no Cofre: enzima humana recombinante marcada com manose 6-fosfato para captação endocítica e entrega ao lisossomo.",
+        name: "Caso 7 – Desvio das Enzimas Lisossomais para Secreção",
+        desc: "Na rede trans do Golgi, faltou o reconhecimento correto das enzimas hidrolíticas: em vez de irem aos endossomos e lisossomos, saem para fora da célula.",
         clues: [
-          "PISTA 1/4: Hidrolases recém-sintetizadas saíram sem marcação fosforilada no carbono 6 e os lisossomos ficaram vazios.",
-          "PISTA 2/4: O Cofre guarda uma enzima terapêutica recombinante marcada com manose 6-fosfato (M6P).",
-          "PISTA 3/4: A enzima infundida é captada por receptores na superfície e trafega pelos endossomos até o lisossomo.",
-          "PISTA 4/4: Integre no Dossiê em qual módulo e via endocítica essa terapia restaura a digestão celular."
+          "PISTA 1/4: As enzimas digestórias foram produzidas no RE e passaram pelas cisternas do Golgi normalmente.",
+          "PISTA 2/4: Na face trans (saída), falhou a triagem que as direciona rumo aos endossomos tardios.",
+          "PISTA 3/4: Os lisossomos ficaram vazios enquanto as hidrolases saíram pela via constitutiva.",
+          "PISTA 4/4: Integre no Dossiê como o Golgi distribui cargas entre secreção e lisossomos."
         ]
       },
       8: {
-        name: "Agente 8 – Colchicina (Sabotadora dos Microtúbulos)",
-        desc: "Alcaloide que impede a polimerização dos microtúbulos do citoesqueleto, interrompendo o transporte de vesículas já desnudadas por proteínas motoras.",
+        name: "Caso 8 – Falha nas Adaptinas e Seleção de Carga",
+        desc: "A clatrina curva a membrana em cestas perfeitas, mas por defeito nas adaptinas e receptores de carga, as vesículas brotam sem capturar as moléculas corretas.",
         clues: [
-          "PISTA 1/4: Alcaloide clássico sequestrando dímeros de tubulina no citoplasma.",
-          "PISTA 2/4: O brotamento revestido, o corte pela dinamina e a perda da capa ocorrem normalmente.",
-          "PISTA 3/4: As proteínas motoras perderam os trilhos do citoesqueleto para se deslocar.",
-          "PISTA 4/4: Vesículas já sem capa ficam dispersas no citosol sem alcançar a membrana-alvo."
+          "PISTA 1/4: As vesículas revestidas conseguem brotar e se soltar da membrana de origem.",
+          "PISTA 2/4: Porém, as proteínas solúveis que deveriam ser transportadas ficaram para trás.",
+          "PISTA 3/4: Faltou a ponte entre os receptores de carga e o revestimento de clatrina.",
+          "PISTA 4/4: Integre no Dossiê por que a clatrina não seleciona carga sozinha (papel das adaptinas)."
         ]
       },
       9: {
-        name: "Agente 9 – Lumacaftor / Elexacaftor (Corretor de Enovelamento no RE)",
-        desc: "Cenário clínico: mutação no canal de cloreto (fibrose cística) faz com que chaperonas retenham e degradem a proteína no RE. Agente no Cofre: corretor farmacológico que estabiliza o enovelamento e libera sua saída até a membrana.",
+        name: "Caso 9 – Saturação de Chaperonas e da UPR no RE",
+        desc: "Proteínas mal-enoveladas acumulam-se além do limite do controle de qualidade no lúmen do RE, saturando a capacidade compensatória da UPR.",
         clues: [
-          "PISTA 1/4: Um canal de cloreto levemente malformado (mas funcional) está sendo retido e degradado no RE.",
-          "PISTA 2/4: A membrana plasmática ficou sem o canal iônico devido ao rigor do controle de qualidade por chaperonas.",
-          "PISTA 3/4: O Cofre guarda uma molécula corretora que estabiliza a conformação 3D do canal no lúmen do RE.",
-          "PISTA 4/4: Integre no Dossiê em qual módulo esse fármaco atua para liberar o tráfego até a superfície."
+          "PISTA 1/4: O bloqueio está no controle de qualidade antes da exportação do RE ao Golgi.",
+          "PISTA 2/4: Chaperonas retêm proteínas defeituosas que falham em se redobrar corretamente.",
+          "PISTA 3/4: Mesmo após expandir o RE, a sobrecarga persiste e ameaça levar a célula à apoptose.",
+          "PISTA 4/4: Integre no Dossiê as etapas do controle de qualidade, degradação e UPR no RE."
         ]
       },
       10: {
-        name: "Agente 10 – Estatina / Atorvastatina (Estimulador de Receptores de LDL)",
-        desc: "Cenário clínico: acúmulo perigoso de LDL rico em colesterol na circulação. Agente no Cofre: fármaco que reduz o colesterol intracelular e induz o hepatócito a expor mais receptores de LDL em fossas de clatrina.",
+        name: "Caso 10 – Falha na Endocitose Mediada por Receptores (LDL)",
+        desc: "Defeito nos receptores de superfície impede a captura concentrada de partículas específicas (como LDL), reduzindo a entrega pela rota endossomal ao lisossomo.",
         clues: [
-          "PISTA 1/4: Partículas de LDL ricas em colesterol acumulam-se perigosamente na corrente sanguínea.",
-          "PISTA 2/4: O Cofre guarda um fármaco que reduz a síntese endógena de colesterol no hepatócito.",
-          "PISTA 3/4: Em resposta, a célula aumenta a exposição de receptores de LDL em fossas revestidas de clatrina.",
-          "PISTA 4/4: Integre no Dossiê em qual módulo e via endocítica esse fármaco acelera a captação de LDL."
+          "PISTA 1/4: A ingestão contínua de líquidos (pinocitose) continua normal, mas cargas específicas não entram.",
+          "PISTA 2/4: Partículas de LDL acumulam-se no meio externo por falta de receptores funcionais.",
+          "PISTA 3/4: Sem captura seletiva, a carga não percorre endossomo inicial → tardio → lisossomo.",
+          "PISTA 4/4: Integre no Dossiê a diferença entre pinocitose/fagocitose e a sequência até o lisossomo."
         ]
       }
     };
@@ -748,7 +756,7 @@
     const ROLE_AVATAR_KEYS = ["dendritic", "b_cell", "killer_t", "helper_t", "macrophage"];
     const ROLE_BADGE_COLORS = ["#16A34A", "#0284C7", "#18181B", "#0D9488", "#DB2777"];
     const ROLES = [
-      "Célula Dendrítica (Líder · Importação/Lip.)",
+      "Célula Dendrítica (Líder · Importação Proteica)",
       "Linfócito B (Escriba · RE, QC e UPR)",
       "Linfócito T CD8+ (Verificador · Vesículas/SNARE)",
       "Linfócito T CD4+ (Porta-voz · Golgi/Exoc.)",
@@ -759,16 +767,212 @@
     // ESTADO DA BANCADA E SINCRONIZAÇÃO EM NUVEM
     // =========================================================================
     let state = loadState();
+    let isMonitorAuthenticated = sessionStorage.getItem("hepx_monitor_auth") === "1";
     let activeSubTab = "d1";
     let tempSelectedTeam = null;
     let draftDigits = { d1: "", d2: "", d3: "" };
     let tblState = { s1: "", s2: "", s3: "" };
+    let eliminatedOpts = { d1: {}, d2: {}, d3: {} };
+    let simState = { aEnv: "lumen", aUpr: "normal", dPump: "on", dRupture: "closed", aCaseFilter: "all", cCaseFilter: "all" };
+    let vaultSuspectId = null;
+    let vaultDraftDigits = ["", "", "", ""];
+
+    const VILLAIN_TAUNTS = {
+      0: "«Cheguei primeiro aos compartimentos desta célula! Bloqueei 4 setores essenciais e ocultei uma sabotagem específica nos arquivos desta bancada. Duvido que seus 5 leucócitos decifrem os mapas da mesa antes do colapso!»",
+      1: "«Tsk! Vocês derrubaram o 1º bloqueio... Mas foi sorte de principiante. Guardem essa 1ª evidência forense: ainda controlo 75% do tráfego celular!»",
+      2: "«Metade da minha contenção já caiu?! Não importa — o próximo setor exige cruzar papel e tela sem vacilar. Dois erros seguidos e a trava de 90 s entrega a célula para mim!»",
+      3: "«Argh! Só me resta 1 setor ativo... Mas mesmo se passarem por ele, vocês ainda não sabem qual sabotagem oculta eu deixei no Cofre Central!»",
+      4: "«Os 4 setores caíram! Mas meu Cofre Central tem DUPLA TRAVA: só abre se acertarem a ordem fisiológica E me acusarem com base nas 4 pistas forenses!»",
+      5: "«NÃO!! Todos os compartimentos reconectados e minha sabotagem foi exposta... O Sistema Imune desta bancada venceu!»"
+    };
+
+    function resetInteractiveDraftState() {
+      eliminatedOpts = { d1: {}, d2: {}, d3: {} };
+      simState = { aEnv: "lumen", aUpr: "normal", dPump: "on", dRupture: "closed", aCaseFilter: "all", cCaseFilter: "all" };
+      vaultSuspectId = null;
+      vaultDraftDigits = ["", "", "", ""];
+    }
+
+    function acceptVillainChallenge() {
+      state.introSeen = true;
+      saveState();
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function continueAfterModuleClear() {
+      state.justCleared = null;
+      saveState();
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function pickVaultSuspect(agentId) {
+      ["m_d1", "m_d2", "m_d3", "m_d4"].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) vaultDraftDigits[i] = el.value;
+      });
+      vaultSuspectId = Number(agentId);
+      renderMasterVault(document.getElementById("appContainer"));
+    }
+
+    function getVaultSuspectOptions(team) {
+      const targetId = team.agent;
+      const allIds = Object.keys(AGENTS).map(Number);
+      const others = allIds.filter(id => id !== targetId);
+      // Seleção determinística de 3 distratores diferentes + o caso real, embaralhada por team.id
+      const picks = [
+        targetId,
+        others[(team.id * 2) % others.length],
+        others[(team.id * 5 + 3) % others.length],
+        others[(team.id * 7 + 5) % others.length]
+      ];
+      // Garante 4 IDs únicos caso algum módulo coincida
+      const uniq = [];
+      picks.forEach(id => { if (!uniq.includes(id)) uniq.push(id); });
+      for (const id of others) {
+        if (uniq.length >= 4) break;
+        if (!uniq.includes(id)) uniq.push(id);
+      }
+      // Rotação determinística pela id da equipe para a resposta certa não ficar sempre na posição 1
+      const shift = team.id % 4;
+      const ordered = uniq.map((_, i) => uniq[(i + shift) % 4]);
+      return ordered.map(id => ({ id, desc: AGENTS[id].desc }));
+    }
+
+    function toggleEliminateOpt(slot, val) {
+      if (!eliminatedOpts[slot]) eliminatedOpts[slot] = {};
+      const key = String(val);
+      eliminatedOpts[slot][key] = !eliminatedOpts[slot][key];
+      renderModule(document.getElementById("appContainer"));
+    }
+
+    function setSimState(key, val) {
+      simState[key] = val;
+      renderModule(document.getElementById("appContainer"));
+    }
+
+    function scrollToLockPanel() {
+      const el = document.getElementById("moduleLockPanel");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function ensureMonitorTeamState(preferredTeamId) {
+      const targetId = Number(preferredTeamId) || state.teamId || tempSelectedTeam || 1;
+      state.teamId = targetId;
+      if (!state.startedAt) state.startedAt = Date.now();
+      if (!Array.isArray(state.members) || state.members.some(m => !m || m.trim().length < 2)) {
+        state.members = [1, 2, 3, 4, 5].map(i => `Especialista ${i}`);
+      }
+      state.cooldownUntil = 0;
+      state.wrongStreak = 0;
+    }
+
+    function monitorOpenModule(modKey, preferredTeamId) {
+      if (!isMonitorAuthenticated) return;
+      ensureMonitorTeamState(preferredTeamId);
+      const team = getTeam();
+      if (!team) return;
+      const idx = team.order.indexOf(modKey);
+      state.introSeen = true;
+      state.justCleared = null;
+      state.stepIndex = idx >= 0 ? idx : 0;
+      activeSubTab = "d1";
+      draftDigits = { d1: "", d2: "", d3: "" };
+      tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
+      localStorage.setItem("hepx_state_v4", JSON.stringify(state));
+      closeMonitorModal();
+      render();
+    }
+
+    function monitorJumpStep(stepIdx, preferredTeamId) {
+      if (!isMonitorAuthenticated) return;
+      ensureMonitorTeamState(preferredTeamId);
+      state.introSeen = true;
+      state.justCleared = null;
+      state.stepIndex = stepIdx;
+      activeSubTab = "d1";
+      draftDigits = { d1: "", d2: "", d3: "" };
+      tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
+      localStorage.setItem("hepx_state_v4", JSON.stringify(state));
+      closeMonitorModal();
+      render();
+    }
+
+    function monitorSwitchTeam(newTeamId) {
+      if (!isMonitorAuthenticated) return;
+      const currTeam = getTeam();
+      const currModKey = (currTeam && state.stepIndex < 4) ? currTeam.order[state.stepIndex] : null;
+      ensureMonitorTeamState(Number(newTeamId));
+      const nextTeam = getTeam();
+      if (currModKey && nextTeam) {
+        const mappedIdx = nextTeam.order.indexOf(currModKey);
+        if (mappedIdx >= 0) state.stepIndex = mappedIdx;
+      }
+      draftDigits = { d1: "", d2: "", d3: "" };
+      tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
+      localStorage.setItem("hepx_state_v4", JSON.stringify(state));
+      render();
+    }
+
+    function monitorResetToSetup() {
+      if (!isMonitorAuthenticated) return;
+      state = defaultState();
+      tempSelectedTeam = null;
+      draftDigits = { d1: "", d2: "", d3: "" };
+      tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
+      localStorage.removeItem("hepx_state_v4");
+      render();
+    }
+
+    function monitorAutoFillModule() {
+      if (!isMonitorAuthenticated) return;
+      const team = getTeam();
+      if (!team || state.stepIndex >= 4) return;
+      const modKey = team.order[state.stepIndex];
+      const code = team.assign[modKey].code;
+      draftDigits = { d1: code[0], d2: code[1], d3: code[2] };
+      if (modKey === "C") {
+        const pair = Object.entries(TBL_MAP).find(([, v]) => v === code[2]);
+        if (pair) {
+          tblState = { s1: pair[0][0], s2: pair[0][1], s3: pair[0][2] };
+        }
+      }
+      renderModule(document.getElementById("appContainer"));
+    }
+
+    function monitorAutoFillMaster() {
+      if (!isMonitorAuthenticated) return;
+      const team = getTeam();
+      if (!team) return;
+      vaultDraftDigits = team.master.split("");
+      vaultSuspectId = team.agent;
+      renderMasterVault(document.getElementById("appContainer"));
+    }
+
+    function exitMonitorMode() {
+      isMonitorAuthenticated = false;
+      sessionStorage.removeItem("hepx_monitor_auth");
+      const authBox = document.getElementById("monitorAuthBox");
+      const content = document.getElementById("monitorContent");
+      const passEl = document.getElementById("monitorPass");
+      if (authBox) authBox.classList.remove("hidden");
+      if (content) content.classList.add("hidden");
+      if (passEl) passEl.value = "";
+      render();
+    }
 
     function defaultState() {
       return {
         teamId: null,
         members: ["", "", "", "", ""],
         startedAt: null,
+        introSeen: false,
+        justCleared: null,
         stepIndex: 0,
         wrongStreak: 0,
         totalErrors: 0,
@@ -904,12 +1108,16 @@
                   state.wrongStreak = 0;
                 } else if (data.action === "skip") {
                   state.stepIndex = 4;
+                  state.introSeen = true;
+                  state.justCleared = null;
                   state.cooldownUntil = 0;
                   state.wrongStreak = 0;
                 } else if (data.action === "reset") {
                   localStorage.removeItem("hepx_state_v4");
                   state = defaultState();
+                  draftDigits = { d1: "", d2: "", d3: "" };
                   tblState = { s1: "", s2: "", s3: "" };
+                  resetInteractiveDraftState();
                 }
                 localStorage.setItem("hepx_state_v4", JSON.stringify(state));
                 saveBenchToMap(state);
@@ -968,12 +1176,18 @@
       try {
         const raw = localStorage.getItem("hepx_state_v4");
         if (raw) {
-          const st = Object.assign(defaultState(), JSON.parse(raw));
+          const parsed = JSON.parse(raw);
+          const st = Object.assign(defaultState(), parsed);
+          if (parsed.introSeen === undefined && st.stepIndex > 0) st.introSeen = true;
           if (st.teamId) {
             const rawMap = localStorage.getItem("hepx_benches_map_v4");
             if (rawMap) {
               const map = JSON.parse(rawMap);
-              if (map[st.teamId]) return Object.assign(defaultState(), map[st.teamId]);
+              if (map[st.teamId]) {
+                const mst = Object.assign(defaultState(), map[st.teamId]);
+                if (map[st.teamId].introSeen === undefined && mst.stepIndex > 0) mst.introSeen = true;
+                return mst;
+              }
             }
           }
           return st;
@@ -1036,6 +1250,14 @@
         renderSetup(c);
         return;
       }
+      if (!state.introSeen && state.stepIndex === 0 && !isMonitorAuthenticated) {
+        renderVillainIntro(c);
+        return;
+      }
+      if (state.justCleared) {
+        renderModuleClearedTransition(c);
+        return;
+      }
       if (state.stepIndex < 4) {
         renderModule(c);
       } else if (state.stepIndex === 4) {
@@ -1045,6 +1267,113 @@
       } else {
         renderCertificate(c);
       }
+    }
+
+    function renderVillainIntro(c) {
+      const team = getTeam();
+      c.innerHTML = `
+        ${renderProgressBar(team)}
+        <div class="max-w-3xl mx-auto caw-surface rounded-3xl overflow-hidden border-2 border-cawRed/30 shadow-xl">
+          <div class="bg-slate-900 text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-5 border-b border-slate-800">
+            <div class="caw-hex-avatar shrink-0" style="width:94px;height:82px;background:#E11D24;">
+              <div class="caw-hex-inner">
+                <div class="caw-hex-core">
+                  <img src="${CAW_ASSETS.villain_hex}" alt="Agente HEP-X" />
+                </div>
+              </div>
+            </div>
+            <div class="space-y-2 text-center sm:text-left">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cawRed text-white font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                TRANSMISSÃO INTERCEPTADA · ${team.pos}
+              </span>
+              <h2 class="font-heading font-black text-2xl sm:text-3xl text-white leading-tight">
+                O Agente HEP-X invadiu a célula!
+              </h2>
+              <p class="text-sm text-amber-200 font-medium leading-relaxed">
+                ${VILLAIN_TAUNTS[0]}
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 space-y-5 bg-white">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-2xl bg-red-50 border border-red-200">
+                <span class="font-mono text-[10px] font-bold uppercase text-cawRed block">1. QUEBREM OS 4 BLOQUEIOS</span>
+                <p class="text-xs text-slate-700 mt-1">Cada módulo exige cruzar o <strong>Kit Impresso na Mesa</strong> (PDFs 06, 07 e 13) com o Terminal.</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200">
+                <span class="font-mono text-[10px] font-bold uppercase text-amber-800 block">2. COLETEM AS 4 PISTAS</span>
+                <p class="text-xs text-slate-700 mt-1">A cada derrota, o Agente HEP-X deixa escapar 1 evidência da sabotagem desta bancada.</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-slate-900 text-white">
+                <span class="font-mono text-[10px] font-bold uppercase text-cawSky block">3. EXPONHAM O CRIME NO COFRE</span>
+                <p class="text-xs text-slate-200 mt-1">No final, ordenem os 4 dígitos E escolham qual sabotagem o vilão cometeu!</p>
+              </div>
+            </div>
+
+            <button type="button" onclick="acceptVillainChallenge()"
+              class="w-full py-4 rounded-2xl bg-cawRed hover:bg-clayDark text-white font-heading font-extrabold text-base tracking-wide shadow-md transition-all">
+              ACEITAR COMBATE · INICIAR PELO SETOR ${team.order[0]} →
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModuleClearedTransition(c) {
+      const team = getTeam();
+      const jc = state.justCleared;
+      const unlockedCount = Math.min(4, state.stepIndex);
+      const threatPct = Math.max(0, 100 - unlockedCount * 25);
+      const isLastMod = state.stepIndex >= 4;
+      const ag = AGENTS[team.agent];
+      const newClue = ag.clues[unlockedCount - 1] || "";
+
+      c.innerHTML = `
+        ${renderProgressBar(team)}
+        <div class="max-w-3xl mx-auto caw-surface rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-xl">
+          <div class="bg-slate-900 text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-5 border-b border-slate-800">
+            <div class="caw-hex-avatar shrink-0" style="width:86px;height:74px;background:#10B981;">
+              <div class="caw-hex-inner">
+                <div class="caw-hex-core">
+                  <img src="${CAW_ASSETS.villain_hex}" alt="Agente HEP-X recuando" />
+                </div>
+              </div>
+            </div>
+            <div class="space-y-2 text-center sm:text-left flex-1">
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-white font-mono text-[10px] font-bold uppercase tracking-widest">
+                  🛡️ SETOR ${jc.modKey} RESTAURADO!
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-white/10 text-amber-300 font-mono text-[10px] font-bold">
+                  AMEAÇA HEP-X REDUZIDA PARA ${threatPct}%
+                </span>
+              </div>
+              <h2 class="font-heading font-black text-2xl text-white">Contra-ataque bem-sucedido!</h2>
+              <p class="text-sm text-amber-200 font-medium leading-relaxed">${VILLAIN_TAUNTS[unlockedCount] || VILLAIN_TAUNTS[4]}</p>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 bg-white space-y-5">
+            <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-200 space-y-1.5">
+              <span class="font-mono text-[11px] uppercase font-bold text-emerald-700 block">
+                🔍 NOVA EVIDÊNCIA FORENSE DECODIFICADA (${unlockedCount}/4):
+              </span>
+              <p class="font-heading font-bold text-base text-slate-900">${newClue}</p>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+              <strong class="font-mono text-charcoal">Lembrete do Cofre:</strong> guardem o <strong>2º dígito</strong> do Módulo ${jc.modKey} (<strong>${team.assign[jc.modKey].d2}</strong>) para montar a sequência biológica final!
+            </div>
+
+            <button type="button" onclick="continueAfterModuleClear()"
+              class="w-full py-4 rounded-2xl ${isLastMod ? 'bg-amber-600 hover:bg-amber-700' : 'bg-cawRed hover:bg-clayDark'} text-white font-heading font-extrabold text-base shadow-md transition-all">
+              ${isLastMod ? 'CONFRONTAR O VILÃO NO COFRE CENTRAL →' : `AVANÇAR PARA O SETOR ${team.order[state.stepIndex]} →`}
+            </button>
+          </div>
+        </div>
+      `;
     }
 
     function renderSetup(c) {
@@ -1079,7 +1408,7 @@
                     <span class="block text-base sm:text-lg font-bold text-cawBlue mt-1">4 Metodologias Ativas · Tráfego Intracelular e Organelas</span>
                   </h1>
                   <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    Após se prepararem nas <strong>5 Mesas de Especialistas (Fase 1)</strong>, os 5 leucócitos retornam à bancada trazendo seus <strong>Cartões de Campo</strong> para enfrentar <strong>4 desafios distintos</strong> (Simulador de Mutantes, Dominó Vesicular, Tribunal do Golgi e CSI Lisossomal) e identificar o <strong>Agente Bioquímico</strong> da equipe no Cofre Central.
+                    Após se prepararem nas <strong>5 Mesas de Especialistas (Fase 1)</strong>, os 5 leucócitos retornam à bancada trazendo seus <strong>Cartões de Campo</strong> para enfrentar <strong>4 estações práticas</strong> (Importação e RE, Dominó Vesicular, Mapa do Golgi/TBL e Endocitose/Lisossomos) e resolver o <strong>Caso-Alvo Celular</strong> da equipe no Cofre Central.
                   </p>
                 </div>
 
@@ -1106,6 +1435,26 @@
           </div>
 
           <div class="caw-surface rounded-3xl p-6 sm:p-8 space-y-7">
+            ${isMonitorAuthenticated ? `
+              <div class="p-4 rounded-2xl bg-slate-900 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-3 border border-slate-700">
+                <div>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-emerald-400 font-bold block">🔓 MODO MONITOR ATIVO · ACESSO DIRETO SEM SENHA</span>
+                  <span class="text-xs text-slate-300">Escolha uma bancada e abra qualquer módulo, Cofre ou Dossiê com 1 clique:</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <select onchange="tempSelectedTeam = Number(this.value)" class="h-8 px-2.5 rounded-lg bg-slate-800 border border-slate-600 text-xs font-mono text-white">
+                    ${TEAMS.map(t => `<option value="${t.id}" ${(tempSelectedTeam || 1) === t.id ? "selected" : ""}>${t.pos} · ${t.name.split(" (")[0]}</option>`).join("")}
+                  </select>
+                  <button type="button" onclick="monitorOpenModule('A')" class="h-8 px-3 rounded-lg bg-cawRed hover:bg-clayDark text-white font-mono text-xs font-bold">Mód. A</button>
+                  <button type="button" onclick="monitorOpenModule('B')" class="h-8 px-3 rounded-lg bg-cawRed hover:bg-clayDark text-white font-mono text-xs font-bold">Mód. B</button>
+                  <button type="button" onclick="monitorOpenModule('C')" class="h-8 px-3 rounded-lg bg-cawRed hover:bg-clayDark text-white font-mono text-xs font-bold">Mód. C</button>
+                  <button type="button" onclick="monitorOpenModule('D')" class="h-8 px-3 rounded-lg bg-cawRed hover:bg-clayDark text-white font-mono text-xs font-bold">Mód. D</button>
+                  <button type="button" onclick="monitorJumpStep(4)" class="h-8 px-3 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs font-bold">Cofre</button>
+                  <button type="button" onclick="monitorJumpStep(5)" class="h-8 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs font-bold">Dossiê</button>
+                  <button type="button" onclick="exitMonitorMode()" class="h-8 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 font-mono text-[11px]">Sair</button>
+                </div>
+              </div>
+            ` : ""}
             <div>
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3.5">
                 <div class="flex items-center gap-2">
@@ -1201,10 +1550,13 @@
       state.teamId = tempSelectedTeam;
       state.members = rawMembers;
       state.startedAt = Date.now();
+      state.introSeen = false;
+      state.justCleared = null;
       state.stepIndex = 0;
       activeSubTab = "d1";
       draftDigits = { d1: "", d2: "", d3: "" };
       tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
       saveState();
       render();
     }
@@ -1219,6 +1571,15 @@
         const cls = isDone
           ? "bg-emerald-600 text-white border-emerald-600"
           : (isCurr ? "bg-cawRed text-white border-cawRed shadow-sm" : "bg-white text-slate-400 border-slate-200");
+        if (isMonitorAuthenticated) {
+          return `
+            <button type="button" onclick="monitorJumpStep(${idx})"
+              class="flex-1 min-w-[115px] px-3.5 py-2 rounded-xl border flex items-center justify-between text-xs transition-all cursor-pointer hover:ring-2 hover:ring-slate-900/30 ${cls}">
+              <span class="font-heading font-bold">${idx + 1}ª · Módulo ${modKey}</span>
+              <span class="font-mono text-[11px] font-bold">${isDone ? "✓ OK" : (isCurr ? "ATIVO" : "ABRIR")}</span>
+            </button>
+          `;
+        }
         return `
           <div class="flex-1 min-w-[115px] px-3.5 py-2 rounded-xl border flex items-center justify-between text-xs transition-all ${cls}">
             <span class="font-heading font-bold">${idx + 1}ª · Módulo ${modKey}</span>
@@ -1233,11 +1594,49 @@
         ? "bg-emerald-600 text-white border-emerald-600"
         : (isVaultCurr ? "bg-cawRed text-white border-cawRed shadow-sm" : "bg-white text-slate-400 border-slate-200");
 
+      const monitorBar = isMonitorAuthenticated ? `
+        <div class="p-3 rounded-2xl bg-slate-900 text-white flex flex-wrap items-center justify-between gap-2 border border-slate-700">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-emerald-400 font-bold">🔓 Modo Monitor</span>
+            <select onchange="monitorSwitchTeam(this.value)" class="h-8 px-2 rounded-lg bg-slate-800 border border-slate-600 text-xs font-mono text-white">
+              ${TEAMS.map(t => `<option value="${t.id}" ${team.id === t.id ? "selected" : ""}>${t.pos} · ${t.name.split(" (")[0]}</option>`).join("")}
+            </select>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5">
+            ${["A", "B", "C", "D"].map(k => {
+              const activeMod = state.stepIndex < 4 && team.order[state.stepIndex] === k;
+              return `<button type="button" onclick="monitorOpenModule('${k}')" class="h-8 px-2.5 rounded-lg font-mono text-xs font-bold transition-colors ${activeMod ? 'bg-cawRed text-white ring-2 ring-white/40' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'}">Mód. ${k}</button>`;
+            }).join("")}
+            <button type="button" onclick="monitorJumpStep(4)" class="h-8 px-2.5 rounded-lg font-mono text-xs font-bold ${state.stepIndex===4 ? 'bg-amber-500 text-white ring-2 ring-white/40' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'}">Cofre</button>
+            <button type="button" onclick="monitorJumpStep(5)" class="h-8 px-2.5 rounded-lg font-mono text-xs font-bold ${state.stepIndex===5 ? 'bg-emerald-600 text-white ring-2 ring-white/40' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'}">Dossiê</button>
+            <button type="button" onclick="monitorResetToSetup()" class="h-8 px-2.5 rounded-lg font-mono text-[11px] bg-slate-700 hover:bg-slate-600 text-slate-200">Início</button>
+            <button type="button" onclick="exitMonitorMode()" class="h-8 px-2.5 rounded-lg font-mono text-[11px] bg-red-900/70 hover:bg-red-700 text-white">Sair</button>
+          </div>
+        </div>
+      ` : "";
+
+      const vaultPill = isMonitorAuthenticated
+        ? `<button type="button" onclick="monitorJumpStep(4)" class="flex-1 min-w-[125px] px-3.5 py-2 rounded-xl border flex items-center justify-between text-xs cursor-pointer hover:ring-2 hover:ring-slate-900/30 ${vaultCls}">
+             <span class="font-heading font-bold">5ª · Cofre Central</span>
+             <span class="font-mono text-[11px] font-bold">${isVaultDone ? "✓" : "ABRIR"}</span>
+           </button>`
+        : `<div class="flex-1 min-w-[125px] px-3.5 py-2 rounded-xl border flex items-center justify-between text-xs ${vaultCls}">
+             <span class="font-heading font-bold">5ª · Cofre Central</span>
+             <span class="font-mono text-[11px] font-bold">${isVaultDone ? "✓" : "🔐"}</span>
+           </div>`;
+
       const ag = AGENTS[team.agent];
       const unlockedCount = Math.min(4, state.stepIndex);
+      const isNeutralized = state.stepIndex >= 5;
+      const threatPct = isNeutralized ? 0 : Math.max(0, 100 - unlockedCount * 25);
+      const threatBarColor = isNeutralized ? "bg-emerald-500" : (threatPct <= 25 ? "bg-amber-500" : "bg-cawRed");
+      const villainStatusBadge = isNeutralized
+        ? `<span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-mono text-[10px] font-bold">NEUTRALIZADO</span>`
+        : `<span class="px-2 py-0.5 rounded-md bg-cawRed text-white font-mono text-[10px] font-bold">AMEAÇA HEP-X: ${threatPct}%</span>`;
+      const tauntText = isNeutralized ? VILLAIN_TAUNTS[5] : (VILLAIN_TAUNTS[unlockedCount] || VILLAIN_TAUNTS[0]);
       const cluesHtml = unlockedCount === 0
-        ? `<span class="text-xs text-slate-500">Destrave os módulos (A, B, C e D) para interceptar as 4 pistas bioquímicas sobre o caso e o Agente desta bancada.</span>`
-        : `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1.5">
+        ? `<span class="text-xs text-slate-500">Derrubem os 4 bloqueios para arrancar as 4 pistas forenses sobre a sabotagem do Agente HEP-X nesta bancada.</span>`
+        : `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
             ${ag.clues.slice(0, unlockedCount).map(cl => `
               <div class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/90 text-xs text-slate-700">
                 <strong class="font-mono text-emerald-600">✓</strong> ${cl}
@@ -1247,27 +1646,32 @@
 
       return `
         <div class="space-y-2.5 mb-5">
+          ${monitorBar}
           <div class="flex flex-wrap gap-2">
             ${pills}
-            <div class="flex-1 min-w-[125px] px-3.5 py-2 rounded-xl border flex items-center justify-between text-xs ${vaultCls}">
-              <span class="font-heading font-bold">5ª · Cofre Central</span>
-              <span class="font-mono text-[11px] font-bold">${isVaultDone ? "✓" : "🔐"}</span>
-            </div>
+            ${vaultPill}
           </div>
 
-          <div class="px-4 py-3 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <div class="caw-hex-sm shrink-0" style="background:#0F172A;">
+          <div class="px-4 py-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-start gap-3">
+            <div class="caw-hex-sm shrink-0 mt-0.5" style="background:${isNeutralized ? '#059669' : '#E11D24'};">
               <div class="caw-hex-inner">
                 <div class="caw-hex-core">
-                  <img src="${CAW_ASSETS.villain_hex}" alt="Agente Bioquímico" />
+                  <img src="${CAW_ASSETS.villain_hex}" alt="Agente HEP-X" />
                 </div>
               </div>
             </div>
             <div class="flex-1 w-full">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-[11px] uppercase font-bold text-slate-700">Pistas Bioquímicas do Agente (${unlockedCount}/4)</span>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  ${villainStatusBadge}
+                  <span class="font-mono text-[11px] uppercase font-bold text-slate-700">Dossiê Forense (${unlockedCount}/4 Pistas)</span>
+                </div>
                 <span class="font-mono text-[11px] font-semibold text-slate-400">${team.name}</span>
               </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden mt-2 mb-1.5">
+                <div class="h-full ${threatBarColor} transition-all duration-300" style="width:${isNeutralized ? 100 : threatPct}%"></div>
+              </div>
+              <p class="text-[11px] font-medium text-slate-600 italic">${tauntText}</p>
               ${cluesHtml}
             </div>
           </div>
@@ -1308,21 +1712,242 @@
       renderModule(document.getElementById("appContainer"));
     }
 
-    function renderOptionCards(slot, list) {
+    function renderOptionCards(slot, list, opts = {}) {
+      const allowEliminate = Boolean(opts.allowEliminate);
+      const elimMap = eliminatedOpts[slot] || {};
       return `
         <div class="grid grid-cols-1 gap-2">
           ${list.map(o => {
-            const isPicked = String(draftDigits[slot]) === String(o[0]);
+            const val = String(o[0]);
+            const isPicked = String(draftDigits[slot]) === val;
+            const isElim = Boolean(elimMap[val]) && !isPicked;
             return `
-              <button type="button" onclick="pickOptionDigit('${slot}', '${o[0]}')"
-                class="w-full text-left p-3 rounded-xl border transition-all flex items-center gap-3 ${isPicked ? 'bg-slate-900 text-white border-slate-900 shadow-sm' : 'bg-white hover:bg-slate-50 text-charcoal border-slate-200'}">
-                <span class="w-8 h-8 rounded-lg font-mono font-bold text-sm flex items-center justify-center shrink-0 ${isPicked ? 'bg-cawRed text-white' : 'bg-slate-100 text-slate-700'}">
-                  ${o[0]}
-                </span>
-                <span class="text-xs sm:text-sm font-medium">${o[1]}</span>
-              </button>
+              <div class="flex items-stretch gap-1.5">
+                <button type="button" onclick="pickOptionDigit('${slot}', '${val}')"
+                  class="flex-1 text-left p-3 rounded-xl border transition-all flex items-center gap-3 ${isPicked ? 'bg-slate-900 text-white border-slate-900 shadow-sm' : (isElim ? 'bg-slate-100/70 text-slate-400 border-slate-200/70 opacity-60' : 'bg-white hover:bg-slate-50 text-charcoal border-slate-200')}">
+                  <span class="w-8 h-8 rounded-lg font-mono font-bold text-sm flex items-center justify-center shrink-0 ${isPicked ? 'bg-cawRed text-white' : (isElim ? 'bg-slate-200 text-slate-400' : 'bg-slate-100 text-slate-700')}">
+                    ${o[0]}
+                  </span>
+                  <span class="text-xs sm:text-sm font-medium ${isElim ? 'line-through' : ''}">${o[1]}</span>
+                </button>
+                ${allowEliminate ? `
+                  <button type="button" onclick="toggleEliminateOpt('${slot}', '${val}')" title="${isElim ? 'Restaurar hipótese' : 'Descartar hipótese'}"
+                    class="w-10 rounded-xl border font-mono text-xs font-bold flex items-center justify-center shrink-0 transition-colors ${isElim ? 'bg-slate-800 text-white border-slate-800' : 'bg-white hover:bg-red-50 text-slate-400 hover:text-cawRed border-slate-200'}">
+                    ${isElim ? '↺' : '✕'}
+                  </button>
+                ` : ''}
+              </div>
             `;
           }).join("")}
+        </div>
+      `;
+    }
+
+    function optionTextMap(list) {
+      const m = {};
+      list.forEach(o => { m[String(o[0])] = o[1]; });
+      return m;
+    }
+
+    // =========================================================================
+    // MAPAS VISUAIS E SIMULADORES INTERATIVOS DA FASE 2
+    // =========================================================================
+    function renderModATab1(mod, assign) {
+      const picked = String(draftDigits.d1 || "");
+      const routeBtn = (digit, branchLabel, tone = "slate") => {
+        const isPicked = picked === digit;
+        const baseTone = tone === "blue"
+          ? "bg-blue-50/90 hover:bg-blue-100 border-blue-200 text-slate-800"
+          : tone === "red"
+            ? "bg-rose-50/90 hover:bg-rose-100 border-rose-200 text-slate-800"
+            : "bg-white hover:bg-slate-50 border-slate-200 text-slate-800";
+        return `
+          <button type="button" onclick="pickOptionDigit('d1', '${digit}')"
+            class="w-full text-left p-3 rounded-xl border-2 transition-all flex items-center justify-between gap-2.5 ${isPicked ? 'bg-slate-900 text-white border-cawRed shadow-md ring-2 ring-cawRed/25' : baseTone}">
+            <span class="flex items-center gap-2.5 min-w-0">
+              <span class="px-2.5 py-1 rounded-lg font-mono font-bold text-xs shrink-0 whitespace-nowrap ${isPicked ? 'bg-cawRed text-white' : 'bg-slate-900/10 text-slate-800'}">ROTA ${digit}</span>
+              <span class="font-mono text-[11px] font-semibold leading-tight ${isPicked ? 'text-cawSky' : 'text-slate-600'}">${branchLabel}</span>
+            </span>
+            <span class="font-mono text-xs font-bold shrink-0 whitespace-nowrap ${isPicked ? 'text-emerald-400' : 'text-slate-400'}">${isPicked ? '✓' : '→'}</span>
+          </button>
+        `;
+      };
+
+      return `
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawRed font-bold block mb-1">📄 ENIGMA HÍBRIDO · CONSULTE O PDF 13 (PÁG. 1) NA MESA</span>
+            A tela exibe apenas os códigos <strong>ROTA 1 a ROTA 7</strong>. Percorram juntos a <strong>Chave Dicotômica impressa na mesa</strong> para descobrir qual rota corresponde ao experimento!
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white border-l-4 border-cawRed space-y-2 shadow-sm">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">PROTOCOLO EXPERIMENTAL · IMPORTAÇÃO → 1º DÍGITO</span>
+            <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qChave[assign.q]}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="font-mono text-[11px] uppercase font-bold text-slate-700">🧬 Selecione a Rota encontrada na Chave Dicotômica do PDF 13:</span>
+              <span class="font-mono text-[11px] font-bold ${picked ? 'text-emerald-700' : 'text-slate-400'}">${picked ? 'Rota ' + picked + ' marcada' : 'Aguardando rota'}</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3 rounded-2xl bg-white border border-slate-200 space-y-2">
+                <span class="font-mono text-[10px] uppercase tracking-wider text-cawBlue font-bold block">Ramo I · Fora do RE</span>
+                ${routeBtn("1", "Ramo I · Citosol", "blue")}
+                ${routeBtn("4", "Ramo I · Núcleo", "blue")}
+                ${routeBtn("5", "Ramo I · Mitocôndria", "blue")}
+              </div>
+
+              <div class="p-3 rounded-2xl bg-white border border-slate-200 space-y-2">
+                <span class="font-mono text-[10px] uppercase tracking-wider text-cawRed font-bold block">Ramos II e III · RE & Saída</span>
+                ${routeBtn("6", "Ramo II · Entrada RE", "slate")}
+                ${routeBtn("2", "Ramo II · Lúmen RE (Sinal)", "slate")}
+                ${routeBtn("3", "Ramo II · Lúmen RE (Solúvel)", "slate")}
+                ${routeBtn("7", "Ramo III · Saída ao Golgi", "red")}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModBTab1(mod, assign) {
+      const picked = String(draftDigits.d1 || "");
+      const pieces = ["1", "2", "3", "4", "5", "6", "7"];
+      return `
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawRed font-bold block mb-1">✂️ ATIVIDADE FÍSICA OBRIGATÓRIA · DOMINÓ NA MESA (PDF 06)</span>
+            ${mod.tableInstruction} <strong>A tela não revela a ordem das proteínas:</strong> só quem montar o dominó físico saberá qual posição (<strong>1ª a 7ª</strong>) travou!
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white border-l-4 border-cawRed space-y-2 shadow-sm">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">GAMIFICAÇÃO TÁTIL · DEBUG DO DOMINÓ MOLECULAR → 1º DÍGITO</span>
+            <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qChave[assign.q]}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <span class="font-mono text-[11px] uppercase font-bold text-slate-700 block">🎲 Circuito Montado na Bancada (1ª → 7ª Posição) — Clique na posição exata em que o circuito trava:</span>
+            <div class="grid grid-cols-2 sm:grid-cols-7 gap-2">
+              ${pieces.map((d, idx) => {
+                const isPicked = picked === d;
+                const badge = idx === 0 ? "Peça G" : "Peça ?";
+                return `
+                  <button type="button" onclick="pickOptionDigit('d1', '${d}')"
+                    class="text-center p-3 rounded-xl border-2 transition-all flex flex-col items-center justify-center gap-1 ${idx === 6 ? 'col-span-2 sm:col-span-1' : ''} ${isPicked ? 'bg-slate-900 text-white border-cawRed shadow-md ring-2 ring-cawRed/25' : 'bg-white hover:bg-slate-50 text-charcoal border-slate-300'}">
+                    <span class="font-mono text-lg font-black whitespace-nowrap ${isPicked ? 'text-cawRed bg-white px-2.5 py-0.5 rounded-lg' : 'text-slate-900'}">${d}ª</span>
+                    <span class="font-mono text-[10px] font-bold uppercase whitespace-nowrap ${isPicked ? 'text-cawSky' : 'text-slate-500'}">${badge}</span>
+                    <span class="font-mono text-[10px] whitespace-nowrap ${isPicked ? 'text-emerald-300' : 'text-slate-400'}">${idx === 0 ? 'Início' : (idx === 6 ? 'Fim' : 'Posição')}</span>
+                  </button>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModCTab1(mod, assign) {
+      const picked = String(draftDigits.d1 || "");
+      const stationBtn = (d, tag, accent = "bg-white border-slate-300") => {
+        const isPicked = picked === d;
+        return `
+          <button type="button" onclick="pickOptionDigit('d1', '${d}')"
+            class="w-full text-left p-3 rounded-xl border-2 transition-all flex items-center justify-between gap-2.5 ${isPicked ? 'bg-slate-900 text-white border-cawRed shadow-md ring-2 ring-cawRed/20' : accent + ' hover:brightness-95 text-charcoal'}">
+            <span class="flex items-center gap-2.5 min-w-0">
+              <span class="w-8 h-8 rounded-lg font-mono font-bold text-sm flex items-center justify-center shrink-0 ${isPicked ? 'bg-cawRed text-white' : 'bg-slate-900/10 text-slate-800'}">${d}</span>
+              <span class="font-mono text-xs font-bold leading-snug">ESTAÇÃO ${d} · <span class="${isPicked ? 'text-cawSky' : 'text-slate-500'}">${tag}</span></span>
+            </span>
+            <span class="font-mono text-xs font-bold shrink-0 whitespace-nowrap">${isPicked ? '✓' : '→'}</span>
+          </button>
+        `;
+      };
+
+      return `
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawRed font-bold block mb-1">🗺️ MAPA CEGO NA TELA · CONSULTE O MAPA DO GOLGI IMPRESSO (PDF 07)</span>
+            ${mod.tableInstruction} <strong>Na tela os nomes anatômicos estão ocultos:</strong> olhem os números <strong>1 a 7</strong> no mapa de papel da mesa!
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white border-l-4 border-cawRed space-y-2 shadow-sm">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">MAPA DO GOLGI · RASTREAMENTO FÍSICO → 1º DÍGITO</span>
+            <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qChave[assign.q]}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 space-y-2">
+            <span class="font-mono text-[11px] uppercase font-bold text-slate-700 block mb-1">🧬 Silhueta Numerada (Estações 1 a 7 do PDF 07) — Clique no número achado na folha:</span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+              <div class="lg:col-span-9 space-y-1.5">
+                ${stationBtn("1", "Ponto de Origem / Retorno", "bg-slate-100 border-slate-300")}
+                <div class="text-center font-mono text-[11px] font-bold text-slate-400">⇅ Vesículas</div>
+                ${stationBtn("2", "Face de Entrada", "bg-sky-50 border-sky-200")}
+                ${stationBtn("3", "Pilha · Nível Inicial", "bg-cyan-50 border-cyan-200")}
+                ${stationBtn("4", "Pilha · Nível Intermediário", "bg-teal-50 border-teal-200")}
+                ${stationBtn("5", "Pilha · Nível Tardio", "bg-amber-50 border-amber-200")}
+                ${stationBtn("6", "Face de Saída / Rotas A·B·C", "bg-rose-50 border-rose-200")}
+              </div>
+              <div class="lg:col-span-3 flex">
+                <button type="button" onclick="pickOptionDigit('d1', '7')"
+                  class="w-full p-4 rounded-2xl border-2 text-left lg:text-center flex flex-row lg:flex-col items-center justify-start lg:justify-center gap-3 transition-all ${picked === '7' ? 'bg-slate-900 text-white border-cawRed shadow-md' : 'bg-emerald-50 hover:bg-emerald-100 border-emerald-300 text-charcoal'}">
+                  <span class="w-9 h-9 rounded-xl font-mono font-bold text-sm flex items-center justify-center shrink-0 ${picked === '7' ? 'bg-cawRed text-white' : 'bg-white text-emerald-700 border border-emerald-300'}">7</span>
+                  <div class="space-y-1">
+                    <span class="font-mono text-[11px] uppercase font-bold block whitespace-nowrap ${picked === '7' ? 'text-cawSky' : 'text-emerald-700'}">ESTAÇÃO / SETA 7</span>
+                    <p class="text-xs font-semibold leading-snug">Modelo dinâmico na seta superior do PDF 07</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModDTab1(mod, assign) {
+      const picked = String(draftDigits.d1 || "");
+      const plateBtn = (d, groupHint, tone = "bg-white border-slate-200") => {
+        const isPicked = picked === d;
+        return `
+          <button type="button" onclick="pickOptionDigit('d1', '${d}')"
+            class="w-full text-left p-3 rounded-xl border-2 transition-all flex items-center justify-between gap-2.5 ${isPicked ? 'bg-slate-900 text-white border-cawRed shadow-md ring-2 ring-cawRed/25' : tone + ' hover:brightness-95 text-charcoal'}">
+            <span class="flex items-center gap-2.5 min-w-0">
+              <span class="px-2.5 py-1 rounded-lg font-mono font-bold text-xs shrink-0 whitespace-nowrap ${isPicked ? 'bg-cawRed text-white' : 'bg-slate-900/10 text-slate-800'}">LÂMINA ${d}</span>
+              <span class="font-mono text-[11px] font-semibold leading-tight ${isPicked ? 'text-cawSky' : 'text-slate-600'}">${groupHint}</span>
+            </span>
+            <span class="font-mono text-xs font-bold shrink-0 whitespace-nowrap">${isPicked ? '✓' : '🔬'}</span>
+          </button>
+        `;
+      };
+
+      return `
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawRed font-bold block mb-1">🔬 INSPEÇÃO FORENSE NA MESA · CONSULTE O PDF 13 (PÁG. 2)</span>
+            O Terminal oculta os nomes das estruturas! Olhem os <strong>7 esquemas desenhados no Atlas Microscópico impresso na mesa</strong> para descobrir qual Lâmina (<strong>1 a 7</strong>) explica a evidência abaixo.
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white border-l-4 border-cawRed space-y-2 shadow-sm">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">PBL FORENSE · ATLAS DE LÂMINAS (PDF 13) → 1º DÍGITO</span>
+            <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qChave[assign.q]}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 space-y-3">
+            <span class="font-mono text-[11px] uppercase font-bold text-slate-700 block">🔎 Escolha o número da Lâmina encontrada no Atlas Microscópico (PDF 13):</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+              ${plateBtn("1", "Entrada na Membrana", "bg-sky-50 border-sky-200")}
+              ${plateBtn("2", "Entrada na Membrana", "bg-indigo-50 border-indigo-200")}
+              ${plateBtn("3", "Entrada na Membrana", "bg-amber-50 border-amber-200")}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              ${plateBtn("4", "Rota Interna · Estação 1", "bg-cyan-50 border-cyan-200")}
+              ${plateBtn("5", "Rota Interna · Estação 2", "bg-teal-50 border-teal-200")}
+              ${plateBtn("6", "Rota Interna · Digestão", "bg-rose-50 border-rose-200")}
+              ${plateBtn("7", "Saída · Exportação", "bg-emerald-50 border-emerald-200")}
+            </div>
+          </div>
         </div>
       `;
     }
@@ -1331,50 +1956,99 @@
     // ABA 1, ABA 2 E ABA 3 PERSONALIZADAS POR MÓDULO (4 METODOLOGIAS DISTINTAS)
     // =========================================================================
     function renderTab1ByModule(modKey, mod, assign) {
-      const headers = {
-        A: "PEER INSTRUCTION · PREVISÃO DE FRACIONAMENTO EXPERIMENTAL",
-        B: "GAMIFICAÇÃO TÁTIL · DEBUG DO DOMINÓ MOLECULAR NA MESA",
-        C: "MAPEAMENTO VISUAL · RASTREAMENTO E MATURAÇÃO NO GOLGI",
-        D: "PBL FORENSE · ESCALA MICROSCÓPICA E ROTA ENDOCÍTICA"
-      };
-      const bannerInstr = mod.tableInstruction
-        ? `<div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 text-xs sm:text-sm text-slate-700 leading-relaxed">
-             <span class="font-mono text-[11px] uppercase tracking-wider text-cawRed font-bold block mb-1">ATIVIDADE PRÁTICA NA MESA</span>
-             ${mod.tableInstruction}
-           </div>`
-        : "";
-
-      return `
-        <div class="space-y-4">
-          ${bannerInstr}
-          <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white border-l-4 border-cawRed space-y-2 shadow-sm">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">${headers[modKey]} → 1º DÍGITO</span>
-            <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qChave[assign.q]}</p>
-          </div>
-          <div>
-            <p class="text-xs text-slate-600 mb-2.5">Discutam com os Cartões de Campo da Fase 1 e selecionem a resposta correta para preencher o <strong>1º Dígito</strong>:</p>
-            ${renderOptionCards("d1", mod.d1Options)}
-          </div>
-        </div>
-      `;
+      if (modKey === "A") return renderModATab1(mod, assign);
+      if (modKey === "B") return renderModBTab1(mod, assign);
+      if (modKey === "C") return renderModCTab1(mod, assign);
+      return renderModDTab1(mod, assign);
     }
 
     function renderTab2ByModule(modKey, mod, assign) {
       const titles = {
-        A: "DIAGNÓSTICO DE FALHA NO RETÍCULO ENDOPLASMÁTICO",
+        A: "TRIAGEM CLÍNICA NO RETÍCULO ENDOPLASMÁTICO",
         B: "INTERROGATÓRIO MOLECULAR · «QUEM SOU EU?»",
         C: "DIAGNÓSTICO EXOCÍTICO E INTRA-GOLGI",
-        D: "AUTÓPSIA FORENSE CORROÍDA PELA ACIDEZ"
+        D: "PRONTUÁRIO FORENSE INTERATIVO (COMPLETE A LACUNA)"
       };
+
+      const optMap = optionTextMap(mod.options);
+      let caseHtml = mod.cases[assign.c];
+      let liveBlankHint = "";
+      if (modKey === "D") {
+        const chosenText = draftDigits.d2 ? optMap[String(draftDigits.d2)] : null;
+        const fillBadge = chosenText
+          ? `<span class="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-500 text-white font-mono text-xs sm:text-sm font-bold mx-1">${chosenText}</span>`
+          : `<span class="inline-block px-2.5 py-0.5 rounded-lg bg-amber-400 text-slate-900 font-mono text-xs font-bold mx-1 animate-pulse">? ESCOLHA ABAIXO ?</span>`;
+        caseHtml = caseHtml.replace("[████████████]", fillBadge);
+        liveBlankHint = `<span class="block text-xs text-slate-300 mt-1">Teste as opções abaixo para encaixar na lacuna e verificar se o prontuário faz sentido biológico.</span>`;
+      }
+
+      let filteredList = mod.options;
+      let filterBar = "";
+      if (modKey === "A") {
+        const groups = {
+          all: null,
+          sinal: new Set(["1", "2", "5", "9", "0"]),
+          lumen: new Set(["3", "4"]),
+          upr: new Set(["6", "7", "8"])
+        };
+        const fKey = simState.aCaseFilter || "all";
+        if (groups[fKey]) {
+          filteredList = mod.options.filter(o => groups[fKey].has(o[0]) || String(draftDigits.d2) === o[0]);
+        }
+        filterBar = `
+          <div class="flex flex-wrap items-center gap-1.5 mb-3">
+            <span class="font-mono text-[11px] text-slate-500 font-bold mr-1">Filtrar setor:</span>
+            ${[
+              ["all", "Todos (10)"],
+              ["sinal", "Sinal / Entrada / Membrana"],
+              ["lumen", "Modificações no Lúmen"],
+              ["upr", "Qualidade / UPR / Apoptose"]
+            ].map(([k, lbl]) => `
+              <button type="button" onclick="setSimState('aCaseFilter', '${k}')"
+                class="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold border transition-colors ${fKey === k ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">
+                ${lbl}
+              </button>
+            `).join("")}
+          </div>
+        `;
+      } else if (modKey === "C") {
+        const groups = {
+          all: null,
+          vias: new Set(["1", "2", "3", "6", "8", "9"]),
+          golgi: new Set(["4", "5", "7", "0"])
+        };
+        const fKey = simState.cCaseFilter || "all";
+        if (groups[fKey]) {
+          filteredList = mod.options.filter(o => groups[fKey].has(o[0]) || String(draftDigits.d2) === o[0]);
+        }
+        filterBar = `
+          <div class="flex flex-wrap items-center gap-1.5 mb-3">
+            <span class="font-mono text-[11px] text-slate-500 font-bold mr-1">Filtrar rota:</span>
+            ${[
+              ["all", "Todos (10)"],
+              ["vias", "Exocitose Constitutiva / Regulada"],
+              ["golgi", "Trânsito RE ↔ Cisternas do Golgi"]
+            ].map(([k, lbl]) => `
+              <button type="button" onclick="setSimState('cCaseFilter', '${k}')"
+                class="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold border transition-colors ${fKey === k ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">
+                ${lbl}
+              </button>
+            `).join("")}
+          </div>
+        `;
+      }
+
       return `
         <div class="space-y-4">
           <div class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 border-l-4 border-cawBlue space-y-2 shadow-sm">
             <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">${titles[modKey]} → 2º DÍGITO (COFRE)</span>
-            <p class="font-heading font-semibold text-base sm:text-lg leading-relaxed text-white">${mod.cases[assign.c]}</p>
+            <p class="font-heading font-semibold text-base sm:text-lg leading-relaxed text-white">${caseHtml}</p>
+            ${liveBlankHint}
           </div>
           <div>
-            <p class="text-xs text-slate-600 mb-2.5">Cliquem no diagnóstico correto (0 a 9) para preencher o <strong>2º Dígito</strong>:</p>
-            ${renderOptionCards("d2", mod.options)}
+            ${filterBar}
+            <p class="text-xs text-slate-600 mb-2.5">Use <strong>✕</strong> à direita para descartar hipóteses impossíveis por eliminação e clique na conclusão correta para gravar o <strong>2º Dígito</strong>:</p>
+            ${renderOptionCards("d2", filteredList, { allowEliminate: true })}
           </div>
         </div>
       `;
@@ -1409,11 +2083,11 @@
                     <p class="text-xs sm:text-sm font-medium text-charcoal flex-1">${txt}</p>
                     <div class="flex gap-1.5 shrink-0">
                       <button type="button" onclick="setTblVote('${key}', 'V')"
-                        class="px-3.5 py-2 rounded-lg font-mono text-xs font-bold border transition-all ${cur==='V' ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">
+                        class="flex-1 sm:flex-initial px-3.5 py-2 rounded-lg font-mono text-xs font-bold border text-center whitespace-nowrap transition-all ${cur==='V' ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">
                         FATO (V)
                       </button>
                       <button type="button" onclick="setTblVote('${key}', 'F')"
-                        class="px-3.5 py-2 rounded-lg font-mono text-xs font-bold border transition-all ${cur==='F' ? 'bg-cawRed text-white border-cawRed' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">
+                        class="flex-1 sm:flex-initial px-3.5 py-2 rounded-lg font-mono text-xs font-bold border text-center whitespace-nowrap transition-all ${cur==='F' ? 'bg-cawRed text-white border-cawRed' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">
                         MITO (F)
                       </button>
                     </div>
@@ -1436,19 +2110,92 @@
       }
 
       const headers = {
-        A: "DECISÃO MECANÍSTICA DE MODIFICAÇÃO E CONTROLE DE QUALIDADE",
-        B: "PRINCÍPIOS DE SELEÇÃO DE CARGA E FUSÃO SELETIVA",
-        D: "ANÁLISE BIOQUÍMICA DO LISOSSOMO E RUPTURA NO CITOSOL"
+        A: "SIMULADOR REDOX & ESTRESSE DO RE (UPR) → 3º DÍGITO",
+        B: "PRINCÍPIOS DE SELEÇÃO DE CARGA E FUSÃO SELETIVA → 3º DÍGITO",
+        D: "SIMULADOR DE pH & SEGURANÇA LISOSSOMAL → 3º DÍGITO"
       };
+
+      let simulatorHtml = "";
+      if (modKey === "A") {
+        const isCyt = simState.aEnv === "citosol";
+        const upr = simState.aUpr || "normal";
+        const uprText = upr === "normal"
+          ? "Chaperonas conferem o dobramento; proteínas defeituosas são retidas no RE ou encaminhadas ao citosol para degradação."
+          : upr === "upr"
+            ? "UPR ATIVADA: o acúmulo sinaliza ao núcleo para expandir o RE e produzir mais chaperonas."
+            : "SATURAÇÃO IRREVERSÍVEL: mesmo após expandir o RE, o programa UPR pode acionar a morte celular (apoptose).";
+        simulatorHtml = `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="font-mono text-[11px] uppercase font-bold text-slate-700 block">🧪 Laboratório Interativo do RE (Teste as condições antes de responder)</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-2">
+                <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">1. Ambiente Químico</span>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <button type="button" onclick="setSimState('aEnv', 'citosol')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${isCyt ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-700 border-slate-200'}">Citosol (Redutor)</button>
+                  <button type="button" onclick="setSimState('aEnv', 'lumen')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${!isCyt ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-700 border-slate-200'}">Lúmen RE (Oxidante)</button>
+                </div>
+                <p class="text-[11px] font-medium ${isCyt ? 'text-amber-800 bg-amber-50 border-amber-200' : 'text-emerald-800 bg-emerald-50 border-emerald-200'} p-2 rounded-lg border">
+                  ${isCyt ? 'Sem pontes dissulfeto: ambiente redutor do citosol impede a ligação covalente S-S entre cisteínas.' : 'Pontes dissulfeto e glicosilação ativas: meio oxidante estabiliza proteínas e enzimas adicionam oligossacarídeos.'}
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-2">
+                <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">2. Carga de Proteínas Mal-Dobradas</span>
+                <div class="grid grid-cols-3 gap-1">
+                  <button type="button" onclick="setSimState('aUpr', 'normal')" class="py-2 px-1.5 rounded-lg font-mono text-[10px] font-bold border text-center flex items-center justify-center whitespace-nowrap ${upr==='normal' ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-700 border-slate-200'}">Chaperonas</button>
+                  <button type="button" onclick="setSimState('aUpr', 'upr')" class="py-2 px-1.5 rounded-lg font-mono text-[10px] font-bold border text-center flex items-center justify-center whitespace-nowrap ${upr==='upr' ? 'bg-amber-600 text-white border-amber-600' : 'bg-slate-50 text-slate-700 border-slate-200'}">UPR</button>
+                  <button type="button" onclick="setSimState('aUpr', 'apoptose')" class="py-2 px-1.5 rounded-lg font-mono text-[10px] font-bold border text-center flex items-center justify-center whitespace-nowrap ${upr==='apoptose' ? 'bg-cawRed text-white border-cawRed' : 'bg-slate-50 text-slate-700 border-slate-200'}">Saturação</button>
+                </div>
+                <p class="text-[11px] font-medium text-slate-700 bg-slate-100 p-2 rounded-lg border border-slate-200">${uprText}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (modKey === "D") {
+        const pumpOn = simState.dPump !== "off";
+        const isRuptured = simState.dRupture === "open";
+        const phLabel = isRuptured ? "pH ~7,2 (Citosol Neutro)" : (pumpOn ? "pH ~5,0 (Ácido · Bomba H⁺ + ATP)" : "pH ~7,0 (Sem Bomba H⁺)");
+        const statusMsg = isRuptured
+          ? "Enzimas ácidas extravasam para o citosol (~7,2), mas tornam-se INATIVAS em pH neutro — célula protegida contra autodigestão!"
+          : (pumpOn
+            ? "Bomba de H⁺ mantém lúmen ácido (~5,0): enzimas hidrolíticas ATIVAS digerindo cargas e organelas (autofagia), enquanto a membrana glicosilada protege o próprio lisossomo."
+            : "Sem bombeamento de H⁺ (ATP), o pH sobe perto da neutralidade (~7,0) e as hidrolases param de digerir.");
+        simulatorHtml = `
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="font-mono text-[11px] uppercase font-bold text-slate-700 block">⚗️ Simulador de pH & Proteção Lisossomal (Teste antes de responder)</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-1.5">
+                <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">Bomba de H⁺ (ATP)</span>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <button type="button" onclick="setSimState('dPump', 'on')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${pumpOn ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-slate-50 text-slate-700 border-slate-200'}">Ligada (pH ~5,0)</button>
+                  <button type="button" onclick="setSimState('dPump', 'off')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${!pumpOn ? 'bg-cawRed text-white border-cawRed' : 'bg-slate-50 text-slate-700 border-slate-200'}">Inibida (~7,0)</button>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-1.5">
+                <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">Estado da Membrana</span>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <button type="button" onclick="setSimState('dRupture', 'closed')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${!isRuptured ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-700 border-slate-200'}">Íntegra (Glicosilada)</button>
+                  <button type="button" onclick="setSimState('dRupture', 'open')" class="py-2 px-2 rounded-lg font-mono text-[11px] font-bold border text-center leading-tight flex items-center justify-center ${isRuptured ? 'bg-amber-600 text-white border-amber-600' : 'bg-slate-50 text-slate-700 border-slate-200'}">Rompida no Citosol</button>
+                </div>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl border font-medium text-xs ${!isRuptured && pumpOn ? 'bg-rose-50 border-rose-200 text-rose-900' : 'bg-sky-50 border-sky-200 text-sky-900'}">
+              <strong class="font-mono uppercase block text-[11px] mb-0.5">${phLabel}</strong>
+              ${statusMsg}
+            </div>
+          </div>
+        `;
+      }
+
       return `
         <div class="space-y-4">
           <div class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 border-l-4 border-cawRed space-y-2 shadow-sm">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">${headers[modKey]} → 3º DÍGITO</span>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-cawSky font-bold">${headers[modKey]}</span>
             <p class="font-heading font-bold text-base sm:text-lg leading-snug text-white">${mod.qNum[assign.n]}</p>
           </div>
+          ${simulatorHtml}
           <div>
-            <p class="text-xs text-slate-600 mb-2.5">Cliquem na explicação biológica correta para preencher o <strong>3º Dígito</strong>:</p>
-            ${renderOptionCards("d3", mod.d3Options)}
+            <p class="text-xs text-slate-600 mb-2.5">Use <strong>✕</strong> para eliminar o que não se aplica e selecione a explicação biológica correta para preencher o <strong>3º Dígito</strong>:</p>
+            ${renderOptionCards("d3", mod.d3Options, { allowEliminate: true })}
           </div>
         </div>
       `;
@@ -1535,26 +2282,38 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          <div class="lg:col-span-8 caw-surface rounded-3xl p-5 sm:p-6">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 p-1.5 rounded-2xl bg-slate-100 mb-5">
+          <div class="lg:col-span-8 caw-surface rounded-3xl p-4 sm:p-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 p-1.5 rounded-2xl bg-slate-100 mb-3">
               <button type="button" onclick="switchSubTab('d1')"
-                class="py-2.5 px-3 rounded-xl font-mono text-xs font-semibold transition-all ${activeSubTab==='d1' ? 'bg-white text-charcoal shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
+                class="py-2.5 px-2.5 rounded-xl font-mono text-[11px] sm:text-xs font-semibold transition-all text-center flex items-center justify-center leading-tight ${activeSubTab==='d1' ? 'bg-white text-charcoal shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
                 ${mod.tabLabels[0]} ${draftDigits.d1 ? '✓' : ''}
               </button>
               <button type="button" onclick="switchSubTab('d2')"
-                class="py-2.5 px-3 rounded-xl font-mono text-xs font-semibold transition-all ${activeSubTab==='d2' ? 'bg-white text-charcoal shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
+                class="py-2.5 px-2.5 rounded-xl font-mono text-[11px] sm:text-xs font-semibold transition-all text-center flex items-center justify-center leading-tight ${activeSubTab==='d2' ? 'bg-white text-charcoal shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
                 ${mod.tabLabels[1]} ${draftDigits.d2 ? '✓' : ''}
               </button>
               <button type="button" onclick="switchSubTab('d3')"
-                class="py-2.5 px-3 rounded-xl font-mono text-xs font-semibold transition-all ${activeSubTab==='d3' ? 'bg-white text-cawRed shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
+                class="py-2.5 px-2.5 rounded-xl font-mono text-[11px] sm:text-xs font-semibold transition-all text-center flex items-center justify-center leading-tight ${activeSubTab==='d3' ? 'bg-white text-cawRed shadow-sm ring-1 ring-slate-200' : 'text-slate-600 hover:text-charcoal'}">
                 ${mod.tabLabels[2]} ${draftDigits.d3 ? '✓' : ''}
+              </button>
+            </div>
+
+            <div class="lg:hidden mb-4 p-2.5 rounded-2xl bg-slate-900 text-white flex items-center justify-between gap-2">
+              <div class="flex items-center gap-1.5 font-mono text-xs">
+                <span class="text-slate-400 text-[10px] uppercase font-bold mr-1">Cadeado:</span>
+                <span class="px-2 py-0.5 rounded bg-white/10 font-bold ${draftDigits.d1 ? 'text-emerald-300' : 'text-slate-300'}">${draftDigits.d1 || '•'}</span>
+                <span class="px-2 py-0.5 rounded bg-white/10 font-bold ${draftDigits.d2 ? 'text-emerald-300' : 'text-slate-300'}">${draftDigits.d2 || '•'}</span>
+                <span class="px-2 py-0.5 rounded bg-white/10 font-bold ${draftDigits.d3 ? 'text-emerald-300' : 'text-slate-300'}">${draftDigits.d3 || '•'}</span>
+              </div>
+              <button type="button" onclick="scrollToLockPanel()" class="px-3 py-1.5 rounded-xl bg-cawRed text-white font-mono text-[11px] font-bold whitespace-nowrap shrink-0">
+                Destravar ↓
               </button>
             </div>
 
             ${subTabContent}
           </div>
 
-          <div class="lg:col-span-4 lg:sticky lg:top-20 caw-surface rounded-3xl p-5 sm:p-6">
+          <div id="moduleLockPanel" class="lg:col-span-4 lg:sticky lg:top-20 caw-surface rounded-3xl p-4 sm:p-6">
             <div class="flex items-center justify-between pb-3.5 border-b border-slate-200/80">
               <div class="flex items-center gap-2.5">
                 <div class="caw-hex-sm">
@@ -1569,21 +2328,21 @@
                   <h3 class="font-heading font-extrabold text-lg text-charcoal">Cadeado · Setor ${modKey}</h3>
                 </div>
               </div>
-              <span class="w-9 h-9 rounded-xl bg-slate-900 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm">${modKey}</span>
+              <span class="w-9 h-9 rounded-xl bg-slate-900 text-white font-mono font-bold flex items-center justify-center text-sm shadow-sm shrink-0">${modKey}</span>
             </div>
 
-            <div class="my-5 flex items-center justify-center gap-3">
+            <div class="my-5 flex items-center justify-center gap-2.5 sm:gap-3 flex-nowrap">
               <div class="text-center">
                 <label class="font-mono text-[11px] text-slate-500 font-medium block mb-1.5">1º Dígito</label>
-                <input type="text" maxlength="1" id="d1" value="${escapeHtmlRaw(draftDigits.d1)}" oninput="draftDigits.d1=this.value" placeholder="•" class="tumbler-input" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d1" value="${escapeHtmlRaw(draftDigits.d1)}" oninput="draftDigits.d1=this.value" placeholder="•" class="tumbler-input" />
               </div>
               <div class="text-center">
                 <label class="font-mono text-[11px] text-slate-500 font-medium block mb-1.5">2º Dígito</label>
-                <input type="text" maxlength="1" id="d2" value="${escapeHtmlRaw(draftDigits.d2)}" oninput="draftDigits.d2=this.value" placeholder="•" class="tumbler-input" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d2" value="${escapeHtmlRaw(draftDigits.d2)}" oninput="draftDigits.d2=this.value" placeholder="•" class="tumbler-input" />
               </div>
               <div class="text-center">
                 <label class="font-mono text-[11px] text-slate-500 font-medium block mb-1.5">3º Dígito</label>
-                <input type="text" maxlength="1" id="d3" value="${escapeHtmlRaw(draftDigits.d3)}" oninput="draftDigits.d3=this.value" placeholder="•" class="tumbler-input" />
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d3" value="${escapeHtmlRaw(draftDigits.d3)}" oninput="draftDigits.d3=this.value" placeholder="•" class="tumbler-input" />
               </div>
             </div>
 
@@ -1597,6 +2356,12 @@
               class="mt-4 w-full py-3.5 rounded-2xl bg-cawRed hover:bg-clayDark text-white font-heading font-bold text-sm transition-all shadow-sm hover:shadow disabled:opacity-40">
               DESTRAVAR MÓDULO ${modKey} →
             </button>
+            ${isMonitorAuthenticated ? `
+              <button type="button" onclick="monitorAutoFillModule()"
+                class="mt-2 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-mono text-xs font-bold transition-colors">
+                ⚡ Preencher Gabarito (${assign.code})
+              </button>
+            ` : ""}
           </div>
         </div>
       `;
@@ -1623,9 +2388,11 @@
       if (entered === assign.code) {
         state.wrongStreak = 0;
         state.stepIndex += 1;
+        state.justCleared = { modKey };
         activeSubTab = "d1";
         draftDigits = { d1: "", d2: "", d3: "" };
         tblState = { s1: "", s2: "", s3: "" };
+        resetInteractiveDraftState();
         saveState();
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1656,16 +2423,30 @@
       const isLocked = state.cooldownUntil > Date.now();
       const refOrder = ["C", "A", "D", "B"];
       const d2Cards = refOrder.map(mk => `
-        <div class="p-3 rounded-xl bg-white border border-moss/20 flex items-center justify-between gap-2">
-          <div class="text-left">
-            <span class="font-mono text-[10px] uppercase text-charcoal/55 block">Módulo ${mk}</span>
-            <span class="font-heading font-bold text-xs text-charcoal">${MODULES[mk].short}</span>
+        <div class="p-3 rounded-xl bg-white border border-moss/20 flex flex-col justify-between gap-2 text-left">
+          <div>
+            <span class="font-mono text-[10px] uppercase text-charcoal/55 block">Setor ${mk}</span>
+            <span class="font-heading font-bold text-xs text-charcoal leading-snug block">${MODULES[mk].short}</span>
           </div>
-          <span class="px-2.5 py-1 rounded-lg bg-moss text-cream font-mono font-bold text-xs">
+          <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-moss text-cream font-mono font-bold text-xs whitespace-nowrap w-fit">
             2º Díg. = ${team.assign[mk].d2}
           </span>
         </div>
       `).join("");
+
+      const ag = AGENTS[team.agent];
+      const suspects = getVaultSuspectOptions(team);
+      const suspectCards = suspects.map((s, idx) => {
+        const isSel = vaultSuspectId === s.id;
+        const letters = ["A", "B", "C", "D"];
+        return `
+          <button type="button" onclick="pickVaultSuspect(${s.id})"
+            class="w-full text-left p-3.5 rounded-2xl border-2 transition-all flex items-start gap-3 ${isSel ? 'bg-slate-900 text-white border-cawRed shadow-md ring-2 ring-cawRed/25' : 'bg-white hover:bg-slate-50 text-charcoal border-slate-200'}">
+            <span class="w-7 h-7 rounded-lg font-mono font-bold text-xs flex items-center justify-center shrink-0 ${isSel ? 'bg-cawRed text-white' : 'bg-slate-100 text-slate-700'}">${letters[idx]}</span>
+            <span class="text-xs sm:text-sm font-medium leading-snug">${s.desc}</span>
+          </button>
+        `;
+      }).join("");
 
       c.innerHTML = `
         ${renderProgressBar(team)}
@@ -1675,48 +2456,69 @@
           <div id="cooldownTimer" class="font-mono font-bold text-4xl mt-2">01:30</div>
         </div>
 
-        <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-moss/20 max-w-3xl mx-auto text-center shadow-md space-y-6">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-cawRed/25 max-w-3xl mx-auto text-center shadow-md space-y-6">
           <div>
-            <span class="font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-moss text-cream">ETAPA FINAL · COFRE CENTRAL</span>
-            <h2 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal mt-3">Desbloqueio do Agente Bioquímico</h2>
+            <span class="font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-cawRed text-white font-bold">CONFRONTO FINAL · DUPLA TRAVA DO COFRE CENTRAL</span>
+            <h2 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal mt-3">Desarmem o Agente HEP-X!</h2>
             <p class="text-sm text-charcoal/75 mt-2 leading-relaxed">
-              Para abrir o Cofre Central, ordenem os quatro <strong>2ºs Dígitos</strong> obtidos nos módulos na <strong>sequência biológica clássica da via secretória/lisossomal: síntese inicial → empacotamento/tráfego vesicular → triagem no Golgi → entrega endossomal/lisossomal</strong>:
+              O vilão bloqueou o cofre com <strong>duas chaves</strong>: (1) a ordem biológica clássica da via secretória/lisossomal e (2) a acusação exata da sabotagem cometida nesta bancada!
             </p>
           </div>
 
-          <div class="p-4 rounded-2xl bg-cream border border-moss/15">
-            <span class="font-mono text-[11px] uppercase text-moss font-bold block mb-2.5">
-              Seus 2ºs Dígitos Coletados (Fora de Ordem):
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-3">
+            <span class="font-mono text-[11px] uppercase text-cawRed font-bold block">
+              🔑 CHAVE 1 · ORDEM BIOLÓGICA (RE → VESÍCULAS → GOLGI → ENDOSSOMO/LISOSSOMO):
             </span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
               ${d2Cards}
+            </div>
+            <div class="flex flex-nowrap items-center justify-center gap-2 sm:gap-3 pt-2">
+              <div>
+                <label class="font-mono text-[11px] sm:text-xs text-charcoal/65 block mb-1 text-center whitespace-nowrap">1ª Etapa</label>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="m_d1" value="${escapeHtmlRaw(vaultDraftDigits[0])}" oninput="vaultDraftDigits[0]=this.value" placeholder="•" class="tumbler-input" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] sm:text-xs text-charcoal/65 block mb-1 text-center whitespace-nowrap">2ª Etapa</label>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="m_d2" value="${escapeHtmlRaw(vaultDraftDigits[1])}" oninput="vaultDraftDigits[1]=this.value" placeholder="•" class="tumbler-input" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] sm:text-xs text-charcoal/65 block mb-1 text-center whitespace-nowrap">3ª Etapa</label>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="m_d3" value="${escapeHtmlRaw(vaultDraftDigits[2])}" oninput="vaultDraftDigits[2]=this.value" placeholder="•" class="tumbler-input" />
+              </div>
+              <div>
+                <label class="font-mono text-[11px] sm:text-xs text-charcoal/65 block mb-1 text-center whitespace-nowrap">4ª Etapa</label>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="m_d4" value="${escapeHtmlRaw(vaultDraftDigits[3])}" oninput="vaultDraftDigits[3]=this.value" placeholder="•" class="tumbler-input" />
+              </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <div>
-              <label class="font-mono text-xs text-charcoal/65 block mb-1">1ª Etapa</label>
-              <input type="text" maxlength="1" id="m_d1" placeholder="•" class="tumbler-input" />
+          <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-left space-y-3">
+            <span class="font-mono text-[11px] uppercase text-amber-900 font-bold block">
+              🕵️ CHAVE 2 · USEM AS 4 PISTAS FORENSES E ACUSEM A SABOTAGEM DO VILÃO:
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              ${ag.clues.map(cl => `
+                <div class="px-3 py-2 rounded-xl bg-white border border-amber-200/80 text-xs text-slate-800">
+                  <strong class="font-mono text-emerald-600">✓</strong> ${cl}
+                </div>
+              `).join("")}
             </div>
-            <div>
-              <label class="font-mono text-xs text-charcoal/65 block mb-1">2ª Etapa</label>
-              <input type="text" maxlength="1" id="m_d2" placeholder="•" class="tumbler-input" />
-            </div>
-            <div>
-              <label class="font-mono text-xs text-charcoal/65 block mb-1">3ª Etapa</label>
-              <input type="text" maxlength="1" id="m_d3" placeholder="•" class="tumbler-input" />
-            </div>
-            <div>
-              <label class="font-mono text-xs text-charcoal/65 block mb-1">4ª Etapa</label>
-              <input type="text" maxlength="1" id="m_d4" placeholder="•" class="tumbler-input" />
+            <div class="grid grid-cols-1 gap-2 pt-1">
+              ${suspectCards}
             </div>
           </div>
 
           <div id="masterMsg"></div>
 
-          <button type="button" onclick="tryUnlockMaster()" ${isLocked ? "disabled" : ""} class="w-full py-4 rounded-2xl bg-clay hover:bg-clayDark text-cream font-heading font-bold text-base transition-colors shadow-md disabled:opacity-40">
-            ABRIR COFRE E REVELAR AGENTE →
+          <button type="button" onclick="tryUnlockMaster()" ${isLocked ? "disabled" : ""} class="w-full py-4 rounded-2xl bg-cawRed hover:bg-clayDark text-white font-heading font-bold text-base transition-colors shadow-md disabled:opacity-40">
+            NEUTRALIZAR AGENTE HEP-X E ABRIR COFRE →
           </button>
+          ${isMonitorAuthenticated ? `
+            <button type="button" onclick="monitorAutoFillMaster()"
+              class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-mono text-xs font-bold transition-colors">
+              ⚡ Preencher Código Mestre (${team.master}) + Acusação Correta
+            </button>
+          ` : ""}
         </div>
       `;
     }
@@ -1724,17 +2526,27 @@
     function tryUnlockMaster() {
       if (state.cooldownUntil > Date.now()) return;
       const team = getTeam();
-      const code = ["m_d1","m_d2","m_d3","m_d4"].map(id => (document.getElementById(id).value || "").trim()).join("");
+      const code = ["m_d1","m_d2","m_d3","m_d4"].map((id, i) => {
+        const v = (document.getElementById(id).value || "").trim();
+        vaultDraftDigits[i] = v;
+        return v;
+      }).join("");
       const msgEl = document.getElementById("masterMsg");
       if (code.length !== 4) {
-        msgEl.innerHTML = `<div class="p-3 rounded-xl bg-clay/15 border border-clay text-clay text-xs font-semibold">Digite os 4 dígitos do Código Mestre.</div>`;
+        msgEl.innerHTML = `<div class="p-3 rounded-xl bg-clay/15 border border-clay text-clay text-xs font-semibold">Digite os 4 dígitos da Chave 1 (Código Mestre).</div>`;
         return;
       }
-      if (code === team.master) {
+      if (!vaultSuspectId) {
+        msgEl.innerHTML = `<div class="p-3 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold">Selecione também a Chave 2: qual sabotagem do Agente HEP-X corresponde às 4 pistas?</div>`;
+        return;
+      }
+      if (code === team.master && vaultSuspectId === team.agent) {
         state.wrongStreak = 0;
         state.stepIndex = 5;
+        resetInteractiveDraftState();
         saveState();
         render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         state.wrongStreak += 1;
         state.totalErrors += 1;
@@ -1744,7 +2556,10 @@
           render();
         } else {
           saveState();
-          msgEl.innerHTML = `<div class="p-3 rounded-xl bg-clay text-cream text-xs font-semibold">Código incorreto (${escapeHtml(code)}). Verifique a ordem biológica percorrida pela hidrolase lisossômica desde sua síntese!</div>`;
+          const detail = code !== team.master
+            ? "a ordem biológica (RE -> Vesículas -> Golgi -> Lisossomo) não fechou"
+            : "a acusação na Chave 2 não bate com todas as 4 pistas forenses";
+          msgEl.innerHTML = `<div class="p-3 rounded-xl bg-clay text-cream text-xs font-semibold">Falha na trava: ${detail}! Mais 1 erro bloqueará o Cofre por 90 s.</div>`;
         }
       }
     }
@@ -1756,15 +2571,15 @@
       c.innerHTML = `
         ${renderProgressBar(team)}
 
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-moss/20 space-y-6">
-          <div class="bg-slate-900 text-white rounded-2xl p-6 border-l-4 border-cawRed space-y-2">
-            <span class="font-mono text-xs uppercase tracking-widest text-cawSky font-semibold">COFRE ABERTO · SÍNTESE FINAL DO ESQUADRÃO</span>
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emerald-500/30 space-y-6 shadow-md">
+          <div class="bg-slate-900 text-white rounded-2xl p-6 border-l-4 border-emerald-400 space-y-2">
+            <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-bold">🏆 PATÓGENO HEP-X NEUTRALIZADO · CÉLULA SALVA!</span>
             <h2 class="font-heading font-bold text-2xl sm:text-3xl">${ag.name}</h2>
             <p class="text-cream/85 text-sm leading-relaxed">${ag.desc}</p>
           </div>
 
           <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-            <strong>Missão Escrita Única:</strong> O Linfócito B (Escriba) redige abaixo a análise integrada do esquadrão conectando o Agente revelado aos mecanismos celulares estudados pela equipe.
+            <strong>Missão Escrita Única:</strong> O Linfócito B (Escriba) redige abaixo a análise integrada do esquadrão conectando o Caso-Alvo revelado aos mecanismos celulares estudados pela equipe.
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1784,8 +2599,8 @@
                 class="w-full p-3.5 rounded-xl bg-cream border border-moss/20 text-sm focus:outline-none focus:border-clay" />
             </div>
             <div>
-              <label class="block font-mono text-xs uppercase text-moss font-bold mb-1.5">4. Aplicação Clínica, Experimental ou Risco</label>
-              <input type="text" id="dos_uso" value="${escapeHtmlRaw(state.dossier.uso)}" placeholder="Cite o uso terapêutico, experimental ou efeito adverso"
+              <label class="block font-mono text-xs uppercase text-moss font-bold mb-1.5">4. Consequência Celular / Síntese Integrada</label>
+              <input type="text" id="dos_uso" value="${escapeHtmlRaw(state.dossier.uso)}" placeholder="O que ocorreria com a célula ou como restaurar o processo?"
                 class="w-full p-3.5 rounded-xl bg-cream border border-moss/20 text-sm focus:outline-none focus:border-clay" />
             </div>
           </div>
@@ -1879,12 +2694,12 @@
           </div>
 
           <div class="p-5 rounded-2xl bg-creamDark border border-moss/20 space-y-2">
-            <h4 class="font-heading font-bold text-base text-charcoal">Dossiê Farmacológico Integrado — ${ag.name}</h4>
+            <h4 class="font-heading font-bold text-base text-charcoal">Dossiê Celular Integrado — ${ag.name}</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
               <div><strong class="font-mono text-moss block">1. ALVO:</strong> ${escapeHtml(state.dossier.alvo)}</div>
               <div><strong class="font-mono text-moss block">2. MECANISMO E EFEITO:</strong> ${escapeHtml(state.dossier.efeito)}</div>
               <div><strong class="font-mono text-moss block">3. OPÇÃO DO MÓDULO:</strong> ${escapeHtml(state.dossier.opcao)}</div>
-              <div><strong class="font-mono text-moss block">4. USO / RISCO:</strong> ${escapeHtml(state.dossier.uso)}</div>
+              <div><strong class="font-mono text-moss block">4. CONSEQUÊNCIA / SÍNTESE:</strong> ${escapeHtml(state.dossier.uso)}</div>
             </div>
           </div>
         </div>
@@ -1912,7 +2727,7 @@
         `1. Alvo: ${state.dossier.alvo}`,
         `2. Mecanismo e Efeito: ${state.dossier.efeito}`,
         `3. Opção: ${state.dossier.opcao}`,
-        `4. Uso/Risco: ${state.dossier.uso}`
+        `4. Consequência / Síntese: ${state.dossier.uso}`
       ].join("\n");
       const blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
       const a = document.createElement("a");
@@ -1937,6 +2752,7 @@
         tempSelectedTeam = null;
         draftDigits = { d1: "", d2: "", d3: "" };
         tblState = { s1: "", s2: "", s3: "" };
+        resetInteractiveDraftState();
         render();
       }
     }
@@ -1948,56 +2764,61 @@
 
     const MONITOR_ANSWERS = {
       A: {
-        name: "Módulo A — Simulador de Mutantes e QC (Q1, Q3, Q4)",
-        order: "Metodologia: Peer Instruction (sem recorte). Especialistas: Cél. Dendrítica (Q1) e Linfócito B (Q3/Q4).",
+        name: "Módulo A — Importação Proteica e Retículo Endoplasmático (Q1, Q3, Q4)",
+        order: "Metodologia: Peer Instruction. Especialistas: Cél. Dendrítica (Q1) e Linfócito B (Q3/Q4).",
         qAns: "Q1 = 1 · Q2 = 2 · Q3 = 3 · Q4 = 4 · Q5 = 5 · Q6 = 6 · Q7 = 7 · Q8 = 1 · Q9 = 5 · Q10 = 3",
         cAns: "Caso 1 → 1 · Caso 2 → 2 · Caso 3 → 3 · Caso 4 → 4 · Caso 5 → 5 · Caso 6 → 6 · Caso 7 → 7 · Caso 8 → 8 · Caso 9 → 9 · Caso 10 → 0",
         nAns: "M1 = 1 · M2 = 2 · M3 = 3 · M4 = 4 · M5 = 5 · M6 = 6 · M7 = 7 · M8 = 2 · M9 = 3 · M10 = 1",
-        laudo: "Cobre Q1 (poros dobrada/GTP vs mitocôndria desenovelada vs RE cotraducional), Q3 (pontes dissulfeto e N-glicosilação 14 açúcares/dolicol) e Q4 (chaperonas, KDEL, UPR e apoptose)."
+        laudo: "Cobre Q1 (3 mecanismos: poros dobrada/GTP, translocadores desenovelada e vesículas), Q3 (pontes dissulfeto e glicosilação no RE) e Q4 (chaperonas, degradação, UPR e apoptose)."
       },
       B: {
-        name: "Módulo B — Circuito Vesicular e Dominó (Q2)",
+        name: "Módulo B — Vesículas Revestidas, Seleção e Fusão Seletiva (Q2)",
         order: "Dominó na Mesa (1ª a 7ª peça): 1ª = G · 2ª = J · 3ª = Q · 4ª = C · 5ª = L · 6ª = E · 7ª = H | Especialista: T CD8+ (Q2).",
         qAns: "B-Q1 = 4 · B-Q2 = 2 · B-Q3 = 7 · B-Q4 = 6 · B-Q5 = 5 · B-Q6 = 3 · B-Q7 = 1 · B-Q8 = 4 · B-Q9 = 6 · B-Q10 = 7",
         cAns: "Caso 1 → 1 · Caso 2 → 2 · Caso 3 → 3 · Caso 4 → 4 · Caso 5 → 5 · Caso 6 → 6 · Caso 7 → 7 · Caso 8 → 8 · Caso 9 → 9 · Caso 10 → 0",
         nAns: "M1 = 1 · M2 = 2 · M3 = 3 · M4 = 4 · M5 = 5 · M6 = 6 · M7 = 7 · M8 = 5 · M9 = 1 · M10 = 6",
-        laudo: "Cobre Q2: clatrina curva sem selecionar carga (receptores + adaptinas selecionam), dinamina corta com GTP, Rab/aprisionamento ancora e v-SNARE/t-SNARE fundem a 1,5 nm."
+        laudo: "Cobre Q2: clatrina curva sem escolher carga (receptores + adaptinas selecionam), dinamina destaca, Rab/aprisionamento reconhece o alvo e v/t-SNAREs fundem as membranas."
       },
       C: {
         name: "Módulo C — Mapa do Golgi e Tribunal TBL (Q5 e Q8)",
-        order: "Folha Única na Mesa (desenho sem recorte) + TBL Fato/Mito (1=VVV, 2=VVF, 3=VFV, 4=VFF, 5=FVV, 6=FVF, 7=FFV, 8=FFF). Esp.: T CD4+.",
+        order: "Mapa do Golgi na Mesa + TBL Fato/Mito (1=VVV, 2=VVF, 3=VFV, 4=VFF, 5=FVV, 6=FVF, 7=FFV, 8=FFF). Esp.: T CD4+.",
         qAns: "C-Q1 = 2 · C-Q2 = 6 · C-Q3 = 3 · C-Q4 = 5 · C-Q5 = 4 · C-Q6 = 7 · C-Q7 = 1 · C-Q8 = 6 · C-Q9 = 7 · C-Q10 = 2",
         cAns: "Caso 1 → 1 · Caso 2 → 2 · Caso 3 → 3 · Caso 4 → 4 · Caso 5 → 5 · Caso 6 → 6 · Caso 7 → 7 · Caso 8 → 8 · Caso 9 → 9 · Caso 10 → 0",
         nAns: "TBL1 = 2 (VVF) · TBL2 = 5 (FVV) · TBL3 = 3 (VFV) · TBL4 = 6 (FVF) · TBL5 = 4 (VFF) · TBL6 = 7 (FFV) · TBL7 = 1 (VVV) · TBL8 = 8 (FFF) · TBL9 = 2 (VVF) · TBL10 = 5 (FVV)",
-        laudo: "Cobre Q8 (polaridade cis/trans, processamento sequencial e maturação cisternal) e Q5 (constitutiva padrão vs regulada em pH ácido/Ca²⁺ 200×, ex. insulina)."
+        laudo: "Cobre Q8 (polaridade cis/trans, modificação ordenada e maturação cisternal) e Q5 (exocitose constitutiva contínua vs. regulada sob sinal, ex. insulina)."
       },
       D: {
-        name: "Módulo D — CSI Lisossomal: PBL Forense (Q6 e Q7)",
-        order: "PBL Forense (sem recorte). Especialista: Macrófago (Questões 6 e 7).",
+        name: "Módulo D — Endocitose, Rota Endossomal e Lisossomos (Q6 e Q7)",
+        order: "PBL Forense (CSI Celular). Especialista: Macrófago (Questões 6 e 7).",
         qAns: "D-Q1 = 1 · D-Q2 = 2 · D-Q3 = 3 · D-Q4 = 4 · D-Q5 = 5 · D-Q6 = 6 · D-Q7 = 7 · D-Q8 = 3 · D-Q9 = 4 · D-Q10 = 2",
         cAns: "Caso 1 → 1 · Caso 2 → 2 · Caso 3 → 3 · Caso 4 → 4 · Caso 5 → 5 · Caso 6 → 6 · Caso 7 → 7 · Caso 8 → 8 · Caso 9 → 9 · Caso 10 → 0",
         nAns: "M1 = 1 · M2 = 2 · M3 = 3 · M4 = 4 · M5 = 5 · M6 = 6 · M7 = 7 · M8 = 2 · M9 = 4 · M10 = 1",
-        laudo: "Cobre Q6 (pinocitose <150 nm + LDL >1000× vs fagocitose >250 nm; endossomo inicial pH 5–6 → tardio → lisossomo) e Q7 (~40 hidrolases pH ~5, bomba H+, M6P, inativação em pH ~7,2 na ruptura)."
+        laudo: "Cobre Q6 (pinocitose/receptor LDL vs. fagocitose; vesícula → endossomo inicial → tardio → lisossomo) e Q7 (pH ácido ~5,0, bomba H+, proteção, autofagia e inativação em pH ~7,2 na ruptura)."
       }
     };
 
     const MONITOR_AGENTS_KEY = [
-      ["Agente 1 · Tunicamicina (Eq. 2)", "Módulo A · Síntese do oligossacarídeo-dolicol (N-glicosilação)", "Proteínas sem glicosilação acumulam no RE e ativam UPR (Q3/Q4)", "A-3 (ou A-7)", "Pesquisa; induz estresse de RE"],
-      ["Agente 2 · Brefeldina A (Eq. 7)", "Módulo B · Recrutamento de capa COP (tráfego RE ↔ Golgi)", "Golgi colapsa no RE; bloqueio secretório (Q2/Q8)", "B-7", "Pesquisa; bloqueio secretório"],
-      ["Agente 3 · Toxina botulínica (Eq. 4)", "Módulo B · Clivagem de proteínas SNARE", "Vesículas ancoram via Rab, mas não fundem (Q2)", "B-6", "Uso clínico/estético; paralisia flácida"],
-      ["Agente 4 · Dynasore (Eq. 1)", "Módulo B · Atividade GTPásica da dinamina", "Fossas revestidas não se destacam da membrana (Q2/Q6)", "B-3", "Experimental; bloqueia captação de LDL"],
-      ["Agente 5 · Monensina (Eq. 6)", "Módulo C · Gradiente de H⁺ (pH ácido) da rede trans", "Neutraliza TGN; impede agregação 200× da via regulada (Q5)", "C-3", "Ionóforo / antibiótico veterinário"],
-      ["Agente 6 · Cloroquina (Eq. 3)", "Módulo D · Acidificação de endossomos e lisossomos", "Eleva pH; inativa hidrolases e impede dissociação LDL (Q6/Q7)", "D-4", "Antimalárico; toxicidade lisossomal"],
-      ["Agente 7 · Enzima com M6P (Eq. 8)", "Módulo D · Receptor de M6P e endocitose mediada por receptor", "Captada na superfície e entregue ao lisossomo via endossomos (Q6/Q7)", "D-5", "Terapia de reposição enzimática"],
-      ["Agente 8 · Colchicina (Eq. 5)", "Módulo B · Polimerização de microtúbulos", "Após o desnudamento normal, vesículas perdem os trilhos das proteínas motoras (Q2)", "B-9 (parte dos motores)", "Tratamento da gota; toxicidade GI"],
-      ["Agente 9 · Lumacaftor (Eq. 9)", "Módulo A · Controle de qualidade / enovelamento no RE", "Estabiliza canal CFTR mutante no RE e permite saída à PM (Q4)", "A-6", "Corretor na fibrose cística"],
-      ["Agente 10 · Estatina (Eq. 10)", "Módulo D · Endocitose mediada por receptor de LDL", "Aumenta exposição de receptores de LDL em hepatócitos (Q6)", "D-3", "Redução do colesterol plasmático"]
+      ["Caso 1 · Falha na Glicosilação e Estresse no RE (Eq. 2)", "Módulo A · Modificações luminais e UPR no RE", "Sem oligossacarídeos, proteínas acumulam e ativam UPR (Q3/Q4)", "A-3 (ou A-7)", "Controle luminal do RE"],
+      ["Caso 2 · Bloqueio RE ↔ Golgi (Eq. 7)", "Módulo B/C · Vesículas COP entre RE e face cis", "Proteínas ficam no RE sem chegar ao Golgi (Q2/Q8)", "B-7 / C-0", "Transporte entre compartimentos"],
+      ["Caso 3 · Falha nas SNAREs (Eq. 4)", "Módulo B · Pareamento v-SNARE / t-SNARE", "Vesículas ancoram via Rab, mas não fundem (Q2)", "B-6", "Especificidade da fusão"],
+      ["Caso 4 · Paralisia da Dinamina (Eq. 1)", "Módulo B · Destacamento por dinamina (GTP)", "Fossas revestidas não se separam da membrana (Q2)", "B-3", "Formação de vesículas"],
+      ["Caso 5 · Desequilíbrio na Exocitose Regulada (Eq. 6)", "Módulo C · Estocagem e sinal externo na TGN", "Produtos como insulina falham em responder ao estímulo (Q5)", "C-3 / C-6", "Vias exocíticas"],
+      ["Caso 6 · Perda da Acidez Lisossomal (Eq. 3)", "Módulo D · Bomba de prótons (H⁺) e pH ácido ~5,0", "Sem acidez, ligantes não se soltam e hidrolases param (Q6/Q7)", "D-4", "Função digestiva"],
+      ["Caso 7 · Desvio de Enzimas Lisossomais (Eq. 8)", "Módulo C/D · Triagem na face trans do Golgi", "Hidrolases são secretadas em vez de ir ao lisossomo (Q7/Q8)", "D-5", "Triagem no Golgi"],
+      ["Caso 8 · Falha nas Adaptinas (Eq. 5)", "Módulo B · Seleção de carga por adaptinas + receptores", "Clatrina curva a membrana, mas vesícula brota vazia (Q2)", "B-2 / B-4", "Seleção de carga"],
+      ["Caso 9 · Saturação de Chaperonas e UPR (Eq. 9)", "Módulo A · Controle de qualidade e apoptose no RE", "Chaperonas retêm defeitos e saturação leva à apoptose (Q4)", "A-6 / A-8", "Qualidade proteica"],
+      ["Caso 10 · Falha na Endocitose de LDL (Eq. 10)", "Módulo D · Endocitose mediada por receptores", "LDL não é captado nem percorre endossomos ao lisossomo (Q6)", "D-3", "Pinocitose seletiva"]
     ];
 
     function openMonitorModal() {
       const m = document.getElementById("monitorModal");
       m.classList.remove("hidden");
       m.classList.add("flex");
+      if (isMonitorAuthenticated) {
+        document.getElementById("monitorAuthBox").classList.add("hidden");
+        document.getElementById("monitorContent").classList.remove("hidden");
+        switchMonitorTab(activeMonitorTab || "equipes");
+      }
     }
     function closeMonitorModal() {
       const m = document.getElementById("monitorModal");
@@ -2089,11 +2910,11 @@
           <table class="w-full text-left border-collapse">
             <thead>
               <tr class="bg-moss text-cream font-mono text-xs">
-                <th class="p-2.5 rounded-tl-xl">Agente</th>
+                <th class="p-2.5 rounded-tl-xl">Caso-Alvo</th>
                 <th class="p-2.5">1. Alvo</th>
                 <th class="p-2.5">2. Efeito Previsto</th>
                 <th class="p-2.5">3. Opção</th>
-                <th class="p-2.5 rounded-tr-xl">4. Uso/Risco</th>
+                <th class="p-2.5 rounded-tr-xl">4. Eixo / Síntese</th>
               </tr>
             </thead>
             <tbody>${rows}</tbody>
@@ -2130,9 +2951,13 @@
     function unlockMonitor() {
       const v = (document.getElementById("monitorPass").value || "").trim().toUpperCase();
       if (v === "CH0856" || v === "MONITOR") {
+        isMonitorAuthenticated = true;
+        sessionStorage.setItem("hepx_monitor_auth", "1");
+        document.getElementById("monitorAuthMsg").innerHTML = "";
         document.getElementById("monitorAuthBox").classList.add("hidden");
         document.getElementById("monitorContent").classList.remove("hidden");
         switchMonitorTab("equipes");
+        render();
       } else {
         document.getElementById("monitorAuthMsg").innerHTML = `
           <div class="p-3 rounded-xl bg-clay/15 border border-clay text-clay text-xs font-semibold">
@@ -2233,6 +3058,8 @@
         bState.wrongStreak = 0;
       } else if (currentMonitorAction === "skip") {
         bState.stepIndex = 4;
+        bState.introSeen = true;
+        bState.justCleared = null;
         bState.cooldownUntil = 0;
         bState.wrongStreak = 0;
       }
@@ -2266,7 +3093,9 @@
       localStorage.removeItem("hepx_benches_map_v4");
       localStorage.removeItem("hepx_state_v4");
       state = defaultState();
+      draftDigits = { d1: "", d2: "", d3: "" };
       tblState = { s1: "", s2: "", s3: "" };
+      resetInteractiveDraftState();
       currentMonitorAction = null;
       selectedMonitorTeamId = null;
       closeMonitorActionDrawer();
